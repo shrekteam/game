@@ -12,9 +12,9 @@ import java.util.Objects;
  *
  * @author bruno
  */
-public class Adversary implements Serializable {
+public class Enemy implements Serializable {
 
-    public Adversary() {
+    public Enemy() {
     }
     private String name;
     private int strength;
@@ -56,7 +56,7 @@ public class Adversary implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Adversary other = (Adversary) obj;
+        final Enemy other = (Enemy) obj;
         if (!Objects.equals(this.name, other.name)) {
             return false;
         }
