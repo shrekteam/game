@@ -37,7 +37,7 @@ public class Enemy implements Serializable {
 
     @Override
     public String toString() {
-        return "Adversary{" + "name=" + name + ", strength=" + strength + '}';
+        return "Enemy{" + "name=" + name + ", strength=" + strength + '}';
     }
 
     @Override
