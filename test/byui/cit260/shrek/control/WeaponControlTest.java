@@ -28,44 +28,44 @@ public class WeaponControlTest {
         WeaponControl instance = new WeaponControl();
         double expResult = 0.05367;
         double result = instance.calcThrowArrowHeight(speed, slope);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         System.out.println("calcThrowArrowHeight2");
         speed = 1.0;
         slope = 30.0;
         //WeaponControl instance = new WeaponControl();
-        expResult = 0.013;
+        expResult = 0.0127;
         result = instance.calcThrowArrowHeight(speed, slope);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result, 0.0001);
         
         System.out.println("calcThrowArrowHeight3");
         speed = 11.0;
         slope = 80.0;
         expResult = -1;
         result = instance.calcThrowArrowHeight(speed, slope);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result, 0.0001);
         
         System.out.println("calcThrowArrowHeight3");
         speed = -1;
         slope = 100.0;
         expResult = -1;
         result = instance.calcThrowArrowHeight(speed, slope);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result, 0.0001);
         
         System.out.println("calcThrowArrowHeight3");
         speed = 0.0;
         slope = 90.0;
         expResult = 0;
         result = instance.calcThrowArrowHeight(speed, slope);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result, 0.0001);
         
         System.out.println("calcThrowArrowHeight3");
         speed = 10.0;
         slope = 0.0;
         expResult = 0;
         result = instance.calcThrowArrowHeight(speed, slope);
-        assertEquals(expResult, result, 0.001);
+        assertEquals(expResult, result, 0.0001);
     }
     
 }
