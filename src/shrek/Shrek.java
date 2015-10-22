@@ -14,6 +14,8 @@ import byui.cit260.shrek.model.Player;
 import byui.cit260.shrek.model.Target;
 import byui.cit260.shrek.model.Weapon;
 
+import byui.cit260.shrek.control.WallControl;
+
 /**
  *
  * @author bruno
@@ -69,7 +71,8 @@ public class Shrek {
         BrunoTestTarget();
         BrunoTestEnemy(); 
         BrunoTestPathway();
+        //calcThrowArrowHeight(1,1,11);
         
     }
-    
+   
 }
