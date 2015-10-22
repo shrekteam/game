@@ -10,7 +10,7 @@ package byui.cit260.shrek.control;
  * @author bruno
  */
 public class WeaponControl {
-    public double calcThrowArrowHeight(double speed, double slope){
+    public double calcLaunchHeight(double speed, double slope){
             final double GRAVITY=9.80665;
             //gravity acceleration
           

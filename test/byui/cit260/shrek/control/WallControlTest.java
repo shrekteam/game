@@ -21,45 +21,45 @@ public class WallControlTest {
      * Test of calcThrowArrowHeight method, of class WallControl.
      */
     @Test
-    public void testCalcThrowArrowHeight() {
-        System.out.println("calcThrowArrowHeight1");
+    public void testCalcLaunchHeightArrow() {
+        System.out.println("calcLaunchHeightArrow1");
         double slope = 30.0;
         double distance = 20.0;
         WallControl instance = new WallControl();
         double expResult = 8.6602;
-        double result = instance.calcThrowArrowHeight(slope, distance);
+        double result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
-        System.out.println("calcThrowArrowHeight2");
+        System.out.println("calcLaunchHeightArrow2");
         slope = 30.0;
         distance = 10.0;
         expResult = 4.3301;
-        result = instance.calcThrowArrowHeight(slope, distance);
+        result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
-        System.out.println("calcThrowArrowHeight3");
+        System.out.println("calcLaunchHeightArrow3");
         slope = 100.0;
         distance = 10.0;
         expResult = -1;
-        result = instance.calcThrowArrowHeight(slope, distance);
+        result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight4");
+        System.out.println("calcLaunchHeightArrow4");
         slope = 90.0;
         distance = 20.0;
         expResult = 0;
-        result = instance.calcThrowArrowHeight(slope, distance);
+        result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight5");
+        System.out.println("calcLaunchArrowHeight5");
         slope = 0.0;
         distance = 40.0;
         expResult = 0;
-        result = instance.calcThrowArrowHeight(slope, distance);
+        result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
                 
     }

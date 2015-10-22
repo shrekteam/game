@@ -10,7 +10,7 @@ package byui.cit260.shrek.control;
  * @author bruno
  */
 public class WallControl {
-    public double calcThrowArrowHeight(double slope, double distance){
+    public double calcLaunchHeightArrow(double slope, double distance){
             double height;
            // if (speed <= 0 || speed > 30){ return  -1; }
             if (slope <0 || slope > 90) { return  -1; }
