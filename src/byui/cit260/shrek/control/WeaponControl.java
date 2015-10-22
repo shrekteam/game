@@ -16,9 +16,9 @@ public class WeaponControl {
           
             double height;
             double evalTilt;
-           // if (speed <= 0 || speed > 30){ return  -1; }
             if (speed<0 || speed > 10) { return  -1; }
             if (slope<0 || slope>90){ return  -1; }
+            //slope is in degrees
             evalTilt = Math.sin(Math.toRadians(slope));
             height = speed * speed * evalTilt * evalTilt/(2*GRAVITY);
             return height;
