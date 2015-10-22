@@ -18,10 +18,7 @@ public class WallControl {
             double evalTilt;
             evalTilt = Math.sin(Math.toRadians(slope));
             height = distance * evalTilt*Math.sqrt((1- evalTilt*evalTilt));
-            if(slope<20 && distance>=10){
-                height=1;
-                }
-    
+                
     return height;           
     }
    }

@@ -22,7 +22,7 @@ public class WallControlTest {
      */
     @Test
     public void testCalcThrowArrowHeight() {
-        System.out.println("calcThrowArrowHeight");
+        System.out.println("calcThrowArrowHeight1");
         double slope = 30.0;
         double distance = 20.0;
         WallControl instance = new WallControl();
@@ -41,21 +41,21 @@ public class WallControlTest {
         // TODO review the generated test code and remove the default call to fail.
         //fail("The test case is a prototype.");
         
-        System.out.println("calcThrowArrowHeight2");
+        System.out.println("calcThrowArrowHeight3");
         slope = 100.0;
         distance = 10.0;
         expResult = -1;
         result = instance.calcThrowArrowHeight(slope, distance);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight2");
+        System.out.println("calcThrowArrowHeight4");
         slope = 90.0;
         distance = 20.0;
         expResult = 0;
         result = instance.calcThrowArrowHeight(slope, distance);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight2");
+        System.out.println("calcThrowArrowHeight5");
         slope = 0.0;
         distance = 40.0;
         expResult = 0;

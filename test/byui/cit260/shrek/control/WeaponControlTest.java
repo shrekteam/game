@@ -46,21 +46,21 @@ public class WeaponControlTest {
         result = instance.calcThrowArrowHeight(speed, slope);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight3");
+        System.out.println("calcThrowArrowHeight4");
         speed = -1;
         slope = 100.0;
         expResult = -1;
         result = instance.calcThrowArrowHeight(speed, slope);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight3");
+        System.out.println("calcThrowArrowHeight5");
         speed = 0.0;
         slope = 90.0;
         expResult = 0;
         result = instance.calcThrowArrowHeight(speed, slope);
         assertEquals(expResult, result, 0.0001);
         
-        System.out.println("calcThrowArrowHeight3");
+        System.out.println("calcThrowArrowHeight6");
         speed = 10.0;
         slope = 0.0;
         expResult = 0;
