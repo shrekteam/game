@@ -21,6 +21,18 @@ public class WallControl {
                 
     return height;           
     }
+     public int initializeWall(double wall, int numBricks){
+            int errOut=0;
+            if (numBricks <=0 || numBricks > 10) { return  -1; }
+            
+            /*
+            if (distance<10 || distance>50){ return  -1; }
+            double evalTilt;
+            evalTilt = Math.sin(Math.toRadians(slope));
+            height = distance * evalTilt*Math.sqrt((1- evalTilt*evalTilt));
+            */    
+    return errOut;           
+    }
    }
     
     
