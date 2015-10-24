@@ -63,7 +63,12 @@ public class WallControlTest {
         result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
         
+    }
+    @Test
+    public void testInitializeWall() {
+                
         System.out.println("initializeWall1");
+        WallControl instance = new WallControl();
         int numBricks = 5;
         Wall myWall = new Wall();
         int expResult2 = 0;
@@ -77,21 +82,25 @@ public class WallControlTest {
         result2 = instance.initializeWall(myWall,numBricks);
         assertEquals(expResult2, result2, 0.0001);
         
-        System.out.println("initializeWall2");
+        System.out.println("initializeWall3");
         numBricks = 11;
         //Wall myWall = new Wall();
         expResult2 = -1;
         result2 = instance.initializeWall(myWall,numBricks);
         assertEquals(expResult2, result2, 0.0001);
         
-        System.out.println("initializeWall2");
+        System.out.println("initializeWall4");
         numBricks = 10;
         //Wall myWall = new Wall();
         expResult2 = 0;
         result2 = instance.initializeWall(myWall,numBricks);
         assertEquals(expResult2, result2, 0.0001);
+     }   
+    @Test
+    public void isWallDestroyed() {
         
         System.out.println("isWallDestroyed1");
+        WallControl instance = new WallControl();
         Wall myWall2 = new Wall();
         myWall2.setBricks(0, 1);
         myWall2.setBricks(1, 1);
@@ -107,8 +116,7 @@ public class WallControlTest {
         assertEquals(expResult3, result3, 0.0001);
         
         System.out.println("isWallDestroyed2");
-        Wall myWall3 = new Wall();
-        
+        Wall myWall3 = new Wall();        
         myWall3.setBricksNum(2);
         resultE = true;
         resultW = instance.isWallDestroyed(myWall3);
@@ -118,6 +126,7 @@ public class WallControlTest {
         if (resultW==true) result3=1;
         assertEquals(expResult3, result3, 0.0001);
         
-    }
+    }   
+    
     
 }
