@@ -5,6 +5,7 @@
  */
 package byui.cit260.shrek.control;
 
+import byui.cit260.shrek.model.Wall;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -61,7 +62,62 @@ public class WallControlTest {
         expResult = 0;
         result = instance.calcLaunchHeightArrow(slope, distance);
         assertEquals(expResult, result, 0.0001);
-                
+        
+        System.out.println("initializeWall1");
+        int numBricks = 5;
+        Wall myWall = new Wall();
+        int expResult2 = 0;
+        int result2 = instance.initializeWall(myWall,numBricks);
+        assertEquals(expResult2, result2, 0.0001);
+        
+        System.out.println("initializeWall2");
+        numBricks = 2;
+        //Wall myWall = new Wall();
+        expResult2 = 0;
+        result2 = instance.initializeWall(myWall,numBricks);
+        assertEquals(expResult2, result2, 0.0001);
+        
+        System.out.println("initializeWall2");
+        numBricks = 11;
+        //Wall myWall = new Wall();
+        expResult2 = -1;
+        result2 = instance.initializeWall(myWall,numBricks);
+        assertEquals(expResult2, result2, 0.0001);
+        
+        System.out.println("initializeWall2");
+        numBricks = 10;
+        //Wall myWall = new Wall();
+        expResult2 = 0;
+        result2 = instance.initializeWall(myWall,numBricks);
+        assertEquals(expResult2, result2, 0.0001);
+        
+        System.out.println("isWallDestroyed1");
+        Wall myWall2 = new Wall();
+        myWall2.setBricks(0, 1);
+        myWall2.setBricks(1, 1);
+        myWall2.setBricks(3, 1);
+        myWall2.setBricks(4, 1);
+        myWall2.setBricksNum(5);
+        boolean resultE = false;
+        boolean resultW = instance.isWallDestroyed(myWall2);
+        int expResult3=0;
+        int result3=0;
+        if (resultE==true) expResult3=1;
+        if (resultW==true) result3=1;
+        assertEquals(expResult3, result3, 0.0001);
+        
+        System.out.println("isWallDestroyed2");
+        Wall myWall3 = new Wall();
+        
+        myWall3.setBricksNum(2);
+        resultE = true;
+        resultW = instance.isWallDestroyed(myWall3);
+        expResult3=0;
+        result3=0;
+        if (resultE==true) expResult3=1;
+        if (resultW==true) result3=1;
+        assertEquals(expResult3, result3, 0.0001);
+        
     }
     
 }

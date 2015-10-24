@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package byui.cit260.shrek.control;
+//import byui.cit260.shrek.model;
+
+import byui.cit260.shrek.model.Wall;
 
 /**
  *
@@ -21,19 +24,28 @@ public class WallControl {
                 
     return height;           
     }
-     public int initializeWall(double wall, int numBricks){
+     public int initializeWall(Wall gameWall, int numBricks){
             int errOut=0;
             if (numBricks <=0 || numBricks > 10) { return  -1; }
+            gameWall.setBricksNum(numBricks);
+            for (int i=0; i<numBricks; i++)
+               gameWall.setBricks(i,1);
+            return errOut;
+    }
+     public boolean isWallDestroyed(Wall gameWall){
+            boolean wallBroken=false;
+            int test;
+            test=gameWall.getNumBricks();
+            for (int i=0;i<gameWall.getNumBricks();i++)
+                 {if (gameWall.getBricks(i)==0)
+                     test--;}
             
-            /*
-            if (distance<10 || distance>50){ return  -1; }
-            double evalTilt;
-            evalTilt = Math.sin(Math.toRadians(slope));
-            height = distance * evalTilt*Math.sqrt((1- evalTilt*evalTilt));
-            */    
-    return errOut;           
+            if(test==0) wallBroken=true;
+            return wallBroken;
     }
    }
     
     
+
+
 
