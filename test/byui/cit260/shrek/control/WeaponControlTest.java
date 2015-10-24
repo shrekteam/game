@@ -67,5 +67,84 @@ public class WeaponControlTest {
         result = instance.calcLaunchHeight(speed, slope);
         assertEquals(expResult, result, 0.0001);
     }
+    /****
+     * @author Kevin Gray
+     */
+    public void testcalcApplyWeapon() {
+        System.out.println("calcApplyWeapon1");
+        double mass = 2;
+        double speed = 30;
+        double targetHP = 150;
+        double resist = .1;
+        WeaponControl instance = new WeaponControl();
+        double result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        double expResult = 96;
+        assertEquals(expResult, result, 0.01);
+       
+        System.out.println("calcApplyWeapon2");
+        mass= -3;
+        speed = 3;
+        targetHP = 100;
+        resist = .5;
+        result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        expResult = -1;
+        assertEquals(expResult, result, 0.01);
+        
+        System.out.println("calcApplyWeapon3");
+        mass= 3;
+        speed = 30;
+        targetHP = 89;
+        resist = 1.5;
+        result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        expResult = -1;
+        assertEquals(expResult, result, 0.01);
+        
+        System.out.println("calcApplyWeapon4");
+        mass= 3;
+        speed = 30;
+        targetHP = 0;
+        resist = .23;
+        result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        expResult = -1;
+        assertEquals(expResult, result, 0.01);
+
+        
+        System.out.println("calcApplyWeapon5");
+        mass= 10000;
+        speed = 10000;
+        targetHP = .1;
+        resist = 0;
+        result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        expResult = 0;
+        assertEquals(expResult, result, 0);
+        
+        System.out.println("calcApplyWeapon6");
+        mass= .1;
+        speed = .1;
+        targetHP = 10000;
+        resist = .99;
+        result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        expResult = 0.99;
+        assertEquals(expResult, result, 9999.99);
+        
+        System.out.println("calcApplyWeapon7");
+        mass= .1;
+        speed = .1;
+        targetHP = .1;
+        resist = 0;
+        result = instance.calcApplyWeapon(mass, speed, targetHP, resist);
+        System.out.println(result);
+        expResult = .09;
+        assertEquals(expResult, result, 0.0001);
+ 
+        
+        
+    }
     
 }
