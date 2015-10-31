@@ -9,7 +9,7 @@ import static byui.cit260.shrek.view.GameMenuView.gameMenu;
 import byui.cit260.shrek.control.GameControl;
 import byui.cit260.shrek.view.MainMenuView;
 import java.util.Scanner;
-import shrek.CuriousWorkmanship;
+import shrek.Shrek;
 
 /**
  *
@@ -82,7 +82,7 @@ public class MainMenuView {
 
     private void startNewGame() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        GameControl.createNewGame(CuriousWorkmanship.getPlayer());
+        GameControl.createNewGame(Shrek.getPlayer());
         GameMenuView.gameMenu=new GameMenuView();
         gameMenu.displayMenu();
         

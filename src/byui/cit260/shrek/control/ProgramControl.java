@@ -6,7 +6,7 @@
 package byui.cit260.shrek.control;
 
 import byui.cit260.shrek.model.Player;
-import shrek.CuriousWorkmanship;
+import shrek.Shrek;
 
 /**
  *
@@ -21,7 +21,7 @@ public class ProgramControl {
         }
         Player player = new Player();
         player.setName(name);
-        CuriousWorkmanship.setPlayer(player);
+        Shrek.setPlayer(player);
         //System.out.println("\n** createPlayer function called");
         return player;
     }

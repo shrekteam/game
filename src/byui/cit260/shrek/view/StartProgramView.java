@@ -17,8 +17,8 @@ public class StartProgramView {
     public void displayBanner(){
         System.out.println("*                         *"
                 +"\n* This is Shrek adventure's game"
-                +"\n* You can choose among user stories"
-                +"\n* It will be a wonderful game"
+                +"\n* You can choose among different stories"
+                +"\n* It will be a wonderful game! "
         );
         
         //String playersName =this.getPlayersName();

@@ -15,6 +15,7 @@ import byui.cit260.shrek.model.Target;
 import byui.cit260.shrek.model.Weapon;
 
 import byui.cit260.shrek.control.WallControl;
+import byui.cit260.shrek.model.Game;
 import byui.cit260.shrek.view.StartProgramView;
 
 /**
@@ -22,6 +23,8 @@ import byui.cit260.shrek.view.StartProgramView;
  * @author bruno
  */
 public class Shrek {
+    private static Game currentGame = null;
+    private static Player player = null;
     
     public static void main (String[] args) {
             
@@ -29,7 +32,22 @@ public class Shrek {
             startProgramView.startProgram();
             
             }  
+    public static Game getCurrentGame() {
+        return currentGame;
+    }
 
+    public static void setCurrentGame(Game currentGame) {
+        Shrek.currentGame = currentGame;
+    }
+
+    public static Player getPlayer() {
+        return player;
+    }
+
+    public static void setPlayer(Player player) {
+        Shrek.player = player;
+    }
+    
     /**
      * @param args the command line arguments
      */
