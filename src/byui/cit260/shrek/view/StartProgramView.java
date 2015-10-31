@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byu.cit260.shrek.view;
+package byui.cit260.shrek.view;
 
 import byui.cit260.shrek.control.ProgramControl;
 import byui.cit260.shrek.model.Player;

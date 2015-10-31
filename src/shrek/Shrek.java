@@ -15,7 +15,7 @@ import byui.cit260.shrek.model.Target;
 import byui.cit260.shrek.model.Weapon;
 
 import byui.cit260.shrek.control.WallControl;
-import byu.cit260.shrek.view.StartProgramView;
+import byui.cit260.shrek.view.StartProgramView;
 
 /**
  *

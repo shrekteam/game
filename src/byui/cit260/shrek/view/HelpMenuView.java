@@ -1,34 +1,37 @@
+/**
+ *
+ * @author bruno
+ */
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package byu.cit260.shrek.view;
+package byui.cit260.shrek.view;
 
-import static byu.cit260.shrek.view.GameMenuView.gameMenu;
-import byui.cit260.shrek.control.GameControl;
-import byu.cit260.shrek.view.MainMenuView;
+//import static byu.cit260.shrek.view.GameMenuView.gameMenu;
+//import byui.cit260.shrek.control.GameControl;
+//import byu.cit260.shrek.view.MainMenuView;
 import java.util.Scanner;
-import shrek.CuriousWorkmanship;
+//import shrek.CuriousWorkmanship;
 
 /**
  *
  * @author bruno
  */
-public class MainMenuView {
+public class HelpMenuView {
     private final String MENU="\n"
             +"\n----------------------------------------"
-            +"\n|            Main Menu                  |"
+            +"\n|              Help Menu                |"
             +"\n----------------------------------------"
-            +"\nN - Start new game"
-            +"\nG - Get and start saved game"
-            +"\nH - Get help on how to play the game"
-            +"\nS - Save the game"
+            +"\nG - What is the goal of your game?"
+            +"\nC - How to choose the adventure"
+            +"\nI - How to choose the inputs?"
             +"\nE - Exit"
             +"\n----------------------------------------";
     void displayMenu() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        //System.out.println("***MainMenuView.displayMenu() function called");
+        System.out.println("***HelpMenuView.displayMenu() function called");
         char selection=' ';
         do {
             System.out.println(MENU);
@@ -60,17 +63,14 @@ public class MainMenuView {
     private void doAction(char choice) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     switch (choice){
-            case 'N':
-                this.startNewGame();
-                break;
             case 'G':
-                this.startExistingGame();
+                this.explainGoal();
                 break;
-            case 'H':
-                this.displayHelpMenu();
+            case 'C':
+                this.explainChoose();
                 break;
-            case 'S':
-                this.saveGame();
+            case 'I':
+                this.explainInputs();
                 break;
             case 'E':
                 return;
@@ -79,28 +79,24 @@ public class MainMenuView {
                 break;              
        }
     }
-
-    private void startNewGame() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        GameControl.createNewGame(CuriousWorkmanship.getPlayer());
-        GameMenuView.gameMenu=new GameMenuView();
-        gameMenu.displayMenu();
-        
+    
+    private void explainGoal() {
+        System.out.println("***The goal is to overcome the adventures");
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 
-    private void startExistingGame() {
-        System.out.println("***Start Existing Game****");
+    private void explainChoose() {
+        System.out.println("***You can choose among three adventures****");
+        System.out.println("***Selecting the numbers 1-2-3-****");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void saveGame() {
-        System.out.println("***Save Game************");
+    private void explainInputs() {
+        System.out.println("***The inputs are values to make calculations");
+        System.out.println("***For example you can choose");
+        System.out.println("***speed(mph)=10 and angle(degrees)=25");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    private void displayHelpMenu() {
-        HelpMenuView myHelp = new HelpMenuView();
-        myHelp.displayMenu();
-        
     }
       
  }
