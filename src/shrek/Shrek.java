@@ -15,17 +15,25 @@ import byui.cit260.shrek.model.Target;
 import byui.cit260.shrek.model.Weapon;
 
 import byui.cit260.shrek.control.WallControl;
+import byu.cit260.shrek.view.StartProgramView;
 
 /**
  *
  * @author bruno
  */
 public class Shrek {
+    
+    public static void main (String[] args) {
+            
+            StartProgramView startProgramView = new StartProgramView();
+            startProgramView.startProgram();
+            
+            }  
 
     /**
      * @param args the command line arguments
      */
-    
+    /*
     private static void BrunoTestPlayer(){
         Player playerOne = new Player();
         playerOne.setName("Shrek2");
@@ -63,7 +71,8 @@ public class Shrek {
         String pathwayInfo = pathwayOne.toString();
         System.out.println(pathwayInfo); 
         
-    }        
+    }    
+    /*
     public static void main(String[] args) {
         // TODO code application logic here
         BrunoTestPlayer();
@@ -74,5 +83,6 @@ public class Shrek {
         //calcThrowArrowHeight(1,1,11);
         
     }
-   
+    */
 }
+
