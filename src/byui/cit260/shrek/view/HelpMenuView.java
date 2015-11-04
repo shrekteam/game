@@ -40,9 +40,9 @@ public class HelpMenuView {
             this.doAction(selection);
         } while(selection!='E');
         
-    
+   
     }
-    
+  
     private String getInput() {
         //To change body of generated methods, choose Tools | Templates.
         boolean valid=false;

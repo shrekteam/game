@@ -4,19 +4,25 @@
  * and open the template in the editor.
  */
 package byui.cit260.shrek.view;
-
-import static byui.cit260.shrek.view.GameMenuView.gameMenu;
 import byui.cit260.shrek.control.GameControl;
-import byui.cit260.shrek.view.MainMenuView;
+import static byui.cit260.shrek.view.GameMenuView.gameMenu;
 import java.util.Scanner;
 import shrek.Shrek;
-
-/**
- *
- * @author bruno
+import byui.cit260.shrek.control.WallControl;
+import byui.cit260.shrek.model.Wall;
+public class WallMenuView {
+    
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-public class MainMenuView {
-    private final String MENU="\n"
+ 
+
+    private final String MENUslope=     
+            "Insert the slope";
+            /*
+            + " \n"
             +"\n----------------------------------------"
             +"\n|            Main Menu                  |"
             +"\n----------------------------------------"
@@ -26,20 +32,28 @@ public class MainMenuView {
             +"\nS - Save the game"
             +"\nE - Exit"
             +"\n----------------------------------------";
+*/  
+    private final String MENUdistance=     
+            "Insert the distance";
+    
     void displayMenu() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         //System.out.println("***MainMenuView.displayMenu() function called");
-        char selection=' ';
+        //char selection=' ';
+        int slope;
+        int distance;
+        boolean repeatDisplay=false;
         do {
-            System.out.println(MENU);
-            String input = this.getInput();
-            selection = input.charAt(0);
-            this.doAction(selection);
-        } while(selection!='E');
+            System.out.println(MENUslope);
+            slope = Integer.valueOf(this.getInput());
+            System.out.println(MENUdistance);
+            distance = Integer.valueOf(this.getInput());
+            //selection = input.charAt(0);
+            repeatDisplay=this.doAction(slope,distance);
+        } while(slope==0 || distance==0 ||(repeatDisplay==true));
         
-    
     }
-    
+ 
     private String getInput() {
         //To change body of generated methods, choose Tools | Templates.
         boolean valid=false;
@@ -56,9 +70,23 @@ public class MainMenuView {
             }
         return value;
         }
+    
 
-    private void doAction(char choice) {
+    private boolean doAction(int mySlope, int myDistance) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    boolean repeat=true;    
+    double myHeight;
+    WallControl myWallControl = new WallControl();
+    
+       myHeight= myWallControl.calcLaunchHeightArrow(mySlope, myDistance);
+       System.out.println("height is:"+myHeight);
+       if (myHeight<=5)System.out.println("choose again the slope and the distance to have an height >5");
+    
+    //while (myHeight<=5);
+       else {System.out.println("the Wall is broken and Shrek enters into the town!"); 
+             repeat=false;}
+       return repeat;
+             /*
     switch (choice){
             case 'N':
                 this.startNewGame();
@@ -78,8 +106,9 @@ public class MainMenuView {
                 System.out.println("Enter the value");
                 break;              
        }
+*/
     }
-
+/*
     private void startNewGame() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         GameControl.createNewGame(Shrek.getPlayer());
@@ -98,11 +127,10 @@ public class MainMenuView {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     private void displayHelpMenu() {
-        
         HelpMenuView myHelp = new HelpMenuView();
         myHelp.displayMenu();
         
     }
-      
+  */    
  }
     

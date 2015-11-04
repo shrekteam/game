@@ -24,7 +24,7 @@ public class WallControl {
                 
     return height;           
     }
-     public int initializeWall(Wall gameWall, int numBricks){
+    public int initializeWall(Wall gameWall, int numBricks){
             int errOut=0;
             if (numBricks <=0 || numBricks > 10) { return  -1; }
             gameWall.setBricksNum(numBricks);
@@ -32,7 +32,7 @@ public class WallControl {
                gameWall.setBricks(i,1);
             return errOut;
     }
-     public boolean isWallDestroyed(Wall gameWall){
+    public boolean isWallDestroyed(Wall gameWall){
             boolean wallBroken=false;
             int test;
             test=gameWall.getNumBricks();
