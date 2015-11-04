@@ -13,11 +13,7 @@ import byui.cit260.shrek.model.Wall;
 
 public class WallMenuView {
     
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
      private final String MENU="\n"
             +"\n----------------------------------------"
             +"\n|         Wall breaking adventure      |"
@@ -53,7 +49,7 @@ public class WallMenuView {
     }
  
     private String getInput() {
-        //To change body of generated methods, choose Tools | Templates.
+        
         boolean valid=false;
         String value=null;
         Scanner keyboard = new Scanner(System.in);
@@ -71,11 +67,9 @@ public class WallMenuView {
     
 
     private boolean doAction(double mySlope, double myDistance) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     boolean repeat=true;    
     double myHeight;
-    double myHeight1;
-    double myHeight2;
        WallControl myWallControl = new WallControl();
        myHeight= myWallControl.calcLaunchHeightArrow(mySlope, myDistance);
        //myHeight1=1000*myHeight;
