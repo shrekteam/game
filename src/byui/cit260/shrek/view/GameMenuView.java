@@ -47,7 +47,7 @@ public class GameMenuView {
             +"\n----------------------------------------"
             +"\nR - Shrek rescues the princess from the tower"
             +"\nG - Shrek goes away from the dragon"
-            +"\nT - Shrek enters into the town"
+            +"\nT - Shrek enters the town breaking the wall"
             +"\nE - Exit"
             +"\n----------------------------------------";
     void displayMenu() {

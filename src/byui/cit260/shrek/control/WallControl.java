@@ -43,6 +43,12 @@ public class WallControl {
             if(test==0) wallBroken=true;
             return wallBroken;
     }
+    public boolean isWallBroken(double height){
+            boolean wallBroken=false;
+                      
+            if(height>10) wallBroken=true;
+            return wallBroken;
+    }
    }
     
     

@@ -10,6 +10,7 @@ import java.util.Scanner;
 import shrek.Shrek;
 import byui.cit260.shrek.control.WallControl;
 import byui.cit260.shrek.model.Wall;
+
 public class WallMenuView {
     
 /*
@@ -17,41 +18,38 @@ public class WallMenuView {
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
- 
-
+     private final String MENU="\n"
+            +"\n----------------------------------------"
+            +"\n|         Wall breaking adventure      |"
+            +"\n----------------------------------------"
+            +"\nThe goal of this adventure is  to break the wall launching an arrow."
+            +"\nSo you have to choose the slope and the distance of the launch. "
+            +"\nIf the launch height is more than 10 meters you break the wall ";
     private final String MENUslope=     
-            "Insert the slope";
-            /*
-            + " \n"
-            +"\n----------------------------------------"
-            +"\n|            Main Menu                  |"
-            +"\n----------------------------------------"
-            +"\nN - Start new game"
-            +"\nG - Get and start saved game"
-            +"\nH - Get help on how to play the game"
-            +"\nS - Save the game"
-            +"\nE - Exit"
-            +"\n----------------------------------------";
-*/  
+            "Insert the slope within O to 90 degrees:";
+            
+ 
     private final String MENUdistance=     
-            "Insert the distance";
+            "Insert the distance within 10 and 50 meters:";
     
     void displayMenu() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         //System.out.println("***MainMenuView.displayMenu() function called");
         //char selection=' ';
-        int slope;
-        int distance;
+        double slope;
+        double distance;
         boolean repeatDisplay=false;
+        System.out.println(MENU);
         do {
+            
+            
             System.out.println(MENUslope);
-            slope = Integer.valueOf(this.getInput());
+            slope = Double.valueOf(this.getInput());
             System.out.println(MENUdistance);
-            distance = Integer.valueOf(this.getInput());
+            distance = Double.valueOf(this.getInput());
             //selection = input.charAt(0);
             repeatDisplay=this.doAction(slope,distance);
-        } while(slope==0 || distance==0 ||(repeatDisplay==true));
-        
+        } while(repeatDisplay==true);
     }
  
     private String getInput() {
@@ -64,7 +62,7 @@ public class WallMenuView {
             value=keyboard.nextLine();
             value=value.trim();
             if(value.length()<1) {
-                System.out.println("Invalid name-it must not be blank");
+                System.out.println("Invalid value-it must not be blank");
                 continue;}
             break;
             }
@@ -72,65 +70,25 @@ public class WallMenuView {
         }
     
 
-    private boolean doAction(int mySlope, int myDistance) {
+    private boolean doAction(double mySlope, double myDistance) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     boolean repeat=true;    
     double myHeight;
-    WallControl myWallControl = new WallControl();
-    
+    double myHeight1;
+    double myHeight2;
+       WallControl myWallControl = new WallControl();
        myHeight= myWallControl.calcLaunchHeightArrow(mySlope, myDistance);
-       System.out.println("height is:"+myHeight);
-       if (myHeight<=5)System.out.println("choose again the slope and the distance to have an height >5");
-    
-    //while (myHeight<=5);
-       else {System.out.println("the Wall is broken and Shrek enters into the town!"); 
+       //myHeight1=1000*myHeight;
+       myHeight=Math.round(myHeight*100);
+       myHeight=myHeight/100;
+       System.out.println("The height is: "+myHeight);
+       if (myWallControl.isWallBroken(myHeight)==false)System.out.println("Please choose again the slope and the distance to have an height >10 meters");
+       //if (myHeight<=10)System.out.println("Please choose again the slope and the distance to have an height >10 meters");
+       
+       else {System.out.println("You broke the wall and Shrek enters the town!!!"); 
              repeat=false;}
        return repeat;
-             /*
-    switch (choice){
-            case 'N':
-                this.startNewGame();
-                break;
-            case 'G':
-                this.startExistingGame();
-                break;
-            case 'H':
-                this.displayHelpMenu();
-                break;
-            case 'S':
-                this.saveGame();
-                break;
-            case 'E':
-                return;
-            default:
-                System.out.println("Enter the value");
-                break;              
-       }
-*/
+    
     }
-/*
-    private void startNewGame() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        GameControl.createNewGame(Shrek.getPlayer());
-        GameMenuView.gameMenu=new GameMenuView();
-        gameMenu.displayMenu();
-        
-    }
-
-    private void startExistingGame() {
-        System.out.println("***Start Existing Game****");
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    private void saveGame() {
-        System.out.println("***Save Game************");
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    private void displayHelpMenu() {
-        HelpMenuView myHelp = new HelpMenuView();
-        myHelp.displayMenu();
-        
-    }
-  */    
  }
     
