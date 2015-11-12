@@ -34,7 +34,7 @@ public class WallControlTest {
         //fail("The test case is a prototype.");
         
         System.out.println("calcLaunchHeightArrow2");
-        slope = 30.0;
+        slope = 25.0;
         distance = 10.0;
         expResult = 4.3301;
         result = instance.calcLaunchHeightArrow(slope, distance);

@@ -21,7 +21,7 @@ public class WallControl {
             double evalTilt;
             evalTilt = Math.sin(Math.toRadians(slope));
             height = distance * evalTilt*Math.sqrt((1- evalTilt*evalTilt));
-                
+                           
     return height;           
     }
     public int initializeWall(Wall gameWall, int numBricks){

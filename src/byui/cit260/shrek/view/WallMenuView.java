@@ -12,7 +12,6 @@ import byui.cit260.shrek.control.WallControl;
 import byui.cit260.shrek.model.Wall;
 
 public class WallMenuView {
-    
 
      private final String MENU="\n"
             +"\n----------------------------------------"
@@ -29,9 +28,7 @@ public class WallMenuView {
             "Insert the distance within 10 and 50 meters:";
     
     void displayMenu() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        //System.out.println("***MainMenuView.displayMenu() function called");
-        //char selection=' ';
+        
         double slope;
         double distance;
         boolean repeatDisplay=false;
@@ -57,6 +54,7 @@ public class WallMenuView {
             System.out.println("Enter the value");
             value=keyboard.nextLine();
             value=value.trim();
+            //if value.parseDouble(value)
             if(value.length()<1) {
                 System.out.println("Invalid value-it must not be blank");
                 continue;}
@@ -76,9 +74,9 @@ public class WallMenuView {
        myHeight=Math.round(myHeight*100);
        myHeight=myHeight/100;
        System.out.println("The height is: "+myHeight);
-       if (myWallControl.isWallBroken(myHeight)==false)System.out.println("Please choose again the slope and the distance to have an height >10 meters");
-       //if (myHeight<=10)System.out.println("Please choose again the slope and the distance to have an height >10 meters");
-       
+       if (myWallControl.isWallBroken(myHeight)==false)
+           System.out.println("Please choose again the slope and the distance to have an height >10 meters");
+              
        else {System.out.println("You broke the wall and Shrek enters the town!!!"); 
              repeat=false;}
        return repeat;

@@ -1,7 +1,3 @@
-/**
- *
- * @author bruno
- */
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -9,9 +5,6 @@
  */
 package byui.cit260.shrek.view;
 
-//import static byu.cit260.shrek.view.GameMenuView.gameMenu;
-//import byui.cit260.shrek.control.GameControl;
-//import byu.cit260.shrek.view.MainMenuView;
 import java.util.Scanner;
 //import shrek.CuriousWorkmanship;
 
@@ -19,8 +12,10 @@ import java.util.Scanner;
  *
  * @author bruno
  */
-public class HelpMenuView {
-    private final String MENU="\n"
+public class HelpMenuView extends View {
+        public HelpMenuView() {
+    //private final String MENU="\n"
+         super("\n"
             +"\n----------------------------------------"
             +"\n|              Help Menu                |"
             +"\n----------------------------------------"
@@ -28,39 +23,14 @@ public class HelpMenuView {
             +"\nC - How to choose the adventure"
             +"\nI - How to choose the inputs?"
             +"\nE - Exit"
-            +"\n----------------------------------------";
-    void displayMenu() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("***HelpMenuView.displayMenu() function called");
-        char selection=' ';
-        do {
-            System.out.println(MENU);
-            String input = this.getInput();
-            selection = input.charAt(0);
-            this.doAction(selection);
-        } while(selection!='E');
-        
-   
-    }
-  
-    private String getInput() {
-        //To change body of generated methods, choose Tools | Templates.
-        boolean valid=false;
-        String value=null;
-        Scanner keyboard = new Scanner(System.in);
-        while(!valid){
-            System.out.println("Enter the value");
-            value=keyboard.nextLine();
-            value=value.trim();
-            if(value.length()<1) {
-                System.out.println("Invalid name-it must not be blank");
-                continue;}
-            break;
-            }
-        return value;
+            +"\n----------------------------------------");
         }
-
-    private void doAction(char choice) {
+    @Override
+    public boolean doAction(Object obj) {
+        String value=(String)obj;
+        value= value.toUpperCase();
+        char choice = value.charAt(0);
+    //private void doAction(char choice) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     switch (choice){
             case 'G':
@@ -73,11 +43,12 @@ public class HelpMenuView {
                 this.explainInputs();
                 break;
             case 'E':
-                return;
+                return true;
             default:
                 System.out.println("Enter the value");
                 break;              
        }
+    return false;
     }
     
     private void explainGoal() {

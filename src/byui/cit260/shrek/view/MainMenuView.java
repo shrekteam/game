@@ -11,12 +11,11 @@ import byui.cit260.shrek.view.MainMenuView;
 import java.util.Scanner;
 import shrek.Shrek;
 
-/**
- *
- * @author bruno
- */
-public class MainMenuView {
-    private final String MENU="\n"
+public class MainMenuView extends View{
+    
+    public MainMenuView(){
+   // private final String MENU="\n"
+        super("\n"
             +"\n----------------------------------------"
             +"\n|            Main Menu                  |"
             +"\n----------------------------------------"
@@ -25,41 +24,14 @@ public class MainMenuView {
             +"\nH - Get help on how to play the game"
             +"\nS - Save the game"
             +"\nE - Exit"
-            +"\n----------------------------------------";
-    void displayMenu() {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        //System.out.println("***MainMenuView.displayMenu() function called");
-        char selection=' ';
-        do {
-            System.out.println(MENU);
-            String input = this.getInput();
-            selection = input.charAt(0);
-            this.doAction(selection);
-        } while(selection!='E');
-        
-    
-    }
-    
-    private String getInput() {
-        //To change body of generated methods, choose Tools | Templates.
-        boolean valid=false;
-        String value=null;
-        Scanner keyboard = new Scanner(System.in);
-        while(!valid){
-            System.out.println("Enter the value");
-            value=keyboard.nextLine();
-            value=value.trim();
-            if(value.length()<1) {
-                System.out.println("Invalid name-it must not be blank");
-                continue;}
-            break;
-            }
-        return value;
+            +"\n----------------------------------------");
         }
-
-    private void doAction(char choice) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    switch (choice){
+    @Override
+    public boolean doAction(Object obj) {
+        String value=(String)obj;
+        value= value.toUpperCase();
+        char choice = value.charAt(0);
+        switch (choice){
             case 'N':
                 this.startNewGame();
                 break;
@@ -73,19 +45,20 @@ public class MainMenuView {
                 this.saveGame();
                 break;
             case 'E':
-                return;
+                return true;
             default:
                 System.out.println("Enter the value");
                 break;              
        }
+        return true;
     }
 
     private void startNewGame() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         GameControl.createNewGame(Shrek.getPlayer());
         GameMenuView.gameMenu=new GameMenuView();
-        gameMenu.displayMenu();
-        
+        gameMenu.display();
+     
     }
 
     private void startExistingGame() {
@@ -100,9 +73,10 @@ public class MainMenuView {
     private void displayHelpMenu() {
         
         HelpMenuView myHelp = new HelpMenuView();
-        myHelp.displayMenu();
+        myHelp.display();
         
     }
       
  }
     
+

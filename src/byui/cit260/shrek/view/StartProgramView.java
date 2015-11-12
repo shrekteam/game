@@ -30,7 +30,7 @@ public void startProgram(){
     Player player = ProgramControl.createPlayer(playersName);
     this.displayWelcomeMessage(player);
     MainMenuView mainMenu=new MainMenuView();
-    mainMenu.displayMenu();
+    mainMenu.display();
 }
 
 private String getPlayersName() {
