@@ -23,9 +23,9 @@ public class PathwayMenuView extends View{
 
     //  private final String MENU="\n"
             +"\n----------------------------------------"
-            +"\n|         Pathway escaping adventure      |"
+            +"\n|         Dragon escaping adventure      |"
             +"\n----------------------------------------"
-            +"\nThe goal of this adventure is  escape form dragon jumping on pathway"
+            +"\nThe goal of this adventure is to escape from the dragon jumping on pathway"
             +"\nSo you have to choose the slope and the speed of the jump. ");
             
     }
@@ -60,7 +60,7 @@ public class PathwayMenuView extends View{
         {System.out.println("\nYou escaped from the dragon!!");
         repeat=false;
         }
-    else {System.out.println("\nRetry values !");}
+    else {System.out.println("\nRetry values !!");}
         
     //private final String MENUslope="Insert the slope within O to 90 degrees:";
     //System.out.println("Insert the slope within O to 90 degrees:");      
