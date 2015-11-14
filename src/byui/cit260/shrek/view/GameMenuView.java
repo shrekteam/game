@@ -28,7 +28,7 @@ public class GameMenuView extends View {
             +"\nE - Exit"
             +"\n----------------------------------------");
          }
-    public boolean doAction(Object obj) {
+    public boolean doAction(Object obj, Object obj2) {
         String value=(String)obj;
         value= value.toUpperCase();
         char choice = value.charAt(0);
@@ -63,7 +63,7 @@ public class GameMenuView extends View {
 
     private void enterTown() {
         WallMenuView myWallMenu=new WallMenuView();
-        myWallMenu.displayMenu();
+        myWallMenu.display();
     }
       
  }

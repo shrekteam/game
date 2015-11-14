@@ -26,7 +26,7 @@ public class HelpMenuView extends View {
             +"\n----------------------------------------");
         }
     @Override
-    public boolean doAction(Object obj) {
+    public boolean doAction(Object obj, Object obj2) {
         String value=(String)obj;
         value= value.toUpperCase();
         char choice = value.charAt(0);

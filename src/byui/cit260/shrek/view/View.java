@@ -32,7 +32,7 @@ public abstract class View implements ViewInterface{
      do {
             System.out.println(this.promptMessage);
             value = this.getInput();
-            done =this.doAction(value);
+            done =this.doAction(value,0);
         } while(!done);
   }  
   @Override

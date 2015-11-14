@@ -11,30 +11,37 @@ import shrek.Shrek;
 import byui.cit260.shrek.control.WallControl;
 import byui.cit260.shrek.model.Wall;
 
-public class WallMenuView {
+public class WallMenuView extends View{
+    
+    public WallMenuView(){
+    //private final String MENU="\n"
+        super("\n"
+    
+//public class WallMenuView {
 
-     private final String MENU="\n"
+    //  private final String MENU="\n"
             +"\n----------------------------------------"
             +"\n|         Wall breaking adventure      |"
             +"\n----------------------------------------"
             +"\nThe goal of this adventure is  to break the wall launching an arrow."
             +"\nSo you have to choose the slope and the distance of the launch. "
-            +"\nIf the launch height is more than 10 meters you break the wall ";
+            +"\nIf the launch height is more than 10 meters you break the wall ");
+    }    
+        
     private final String MENUslope=     
             "Insert the slope within O to 90 degrees:";
-            
- 
+          
     private final String MENUdistance=     
             "Insert the distance within 10 and 50 meters:";
-    
-    void displayMenu() {
+    @Override
+    public void display() {
         
         double slope;
         double distance;
         boolean repeatDisplay=false;
-        System.out.println(MENU);
+        //System.out.println(MENU);
+        System.out.println(super.getPromptMessage());
         do {
-            
             
             System.out.println(MENUslope);
             slope = Double.valueOf(this.getInput());
@@ -44,7 +51,7 @@ public class WallMenuView {
             repeatDisplay=this.doAction(slope,distance);
         } while(repeatDisplay==true);
     }
- 
+ /*
     private String getInput() {
         
         boolean valid=false;
@@ -62,10 +69,12 @@ public class WallMenuView {
             }
         return value;
         }
+   */ 
+    @Override
+    public boolean doAction(Object obj, Object obj2) {
+    double mySlope=(double)obj;
+    double myDistance=(double)obj2;
     
-
-    private boolean doAction(double mySlope, double myDistance) {
-        
     boolean repeat=true;    
     double myHeight;
        WallControl myWallControl = new WallControl();
