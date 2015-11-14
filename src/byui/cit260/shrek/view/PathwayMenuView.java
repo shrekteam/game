@@ -47,7 +47,8 @@ public class PathwayMenuView extends View{
             //selection = input.charAt(0);
             repeatDisplay=this.doAction(slope,speed);
         } while(repeatDisplay==true);
-        }
+    }
+    
     @Override
     public boolean doAction(Object obj, Object obj2) {
     double mySlope=(double)obj;
