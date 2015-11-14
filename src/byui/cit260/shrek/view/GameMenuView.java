@@ -59,6 +59,8 @@ public class GameMenuView extends View {
 
     private void goAway() {
         System.out.println("***The goal is to escape from the dragon***");
+        PathwayMenuView myPathwayMenu= new PathwayMenuView();
+        myPathwayMenu.display();
     }
 
     private void enterTown() {
