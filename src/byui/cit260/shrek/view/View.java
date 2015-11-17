@@ -12,7 +12,7 @@ import java.util.Scanner;
  * @author bruno
  */
 public abstract class View implements ViewInterface{
-    private String promptMessage;
+    protected String promptMessage;
 
     public String getPromptMessage() {
         return promptMessage;
@@ -32,7 +32,7 @@ public abstract class View implements ViewInterface{
      do {
             System.out.println(this.promptMessage);
             value = this.getInput();
-            done =this.doAction(value,0);
+            done =this.doAction(value);
         } while(!done);
   }  
   @Override

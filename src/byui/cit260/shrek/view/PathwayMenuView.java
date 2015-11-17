@@ -50,6 +50,8 @@ public class PathwayMenuView extends View{
     }
     
     @Override
+    public boolean doAction(Object obj) {return false;}
+    
     public boolean doAction(Object obj, Object obj2) {
     double mySlope=(double)obj;
     double mySpeed=(double)obj2;
