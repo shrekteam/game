@@ -12,6 +12,6 @@ package byui.cit260.shrek.view;
 public interface ViewInterface {
     public void display();
     public String getInput();
-    public boolean doAction(Object obj, Object obj2);
+    public boolean doAction(Object object);
     
 }
