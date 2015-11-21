@@ -15,6 +15,10 @@ import java.util.Objects;
 public class Pathway implements Serializable{
     private String name;
     private double dimension;
+    public Pathway(){
+        this.name="pathway";
+        this.dimension=0;
+    }
 
     public String getName() {
         return name;
@@ -64,8 +68,6 @@ public class Pathway implements Serializable{
     }
     
 
-    public Pathway() {
-    }
     
     
 }

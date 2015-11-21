@@ -11,7 +11,11 @@ package byui.cit260.shrek.model;
  */
 public class Wall {
     private int bricksNum;
-    private int[] bricks = {0,0,0,0,0,0,0,0,0,0};
+    private int bricks[] = {0,0,0,0,0,0,0,0,0,0};
+    public Wall(){
+        this.bricksNum=10;
+       
+    }
       public void setBricksNum(int numb) {
         this.bricksNum = numb;}
       public int getNumBricks() {
