@@ -89,7 +89,7 @@ public class GameControl {
 
     public static InventoryItem[] getSortedInventoryList() {
        //this function implments bubblesort, but I use the next function, InsertionSort
-        InventoryItem[] originalInventoryList = Shrek.getCurrentGame().GetInventory();
+        InventoryItem[] originalInventoryList = Shrek.getCurrentGame().getInventory();
         
         InventoryItem[] inventoryList = originalInventoryList.clone();
         InventoryItem tempInventoryItem;
@@ -109,7 +109,7 @@ public class GameControl {
     }
     public static InventoryItem[] getInsertionSortedInventoryList() {
        //this function implements Insertion sort algorythm
-        InventoryItem[] originalInventoryList = Shrek.getCurrentGame().GetInventory();
+        InventoryItem[] originalInventoryList = Shrek.getCurrentGame().getInventory();
         
         InventoryItem[] inventoryList = originalInventoryList.clone();
         InventoryItem tempInventoryItem;

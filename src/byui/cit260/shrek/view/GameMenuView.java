@@ -32,6 +32,7 @@ public class GameMenuView extends View {
             +"\n----------------------------------------"
             +"\nV - View map"     
             +"\nI - View list of item in inventory"
+           // +"\nP - Purchase an Item"
             //+"\nA - View list actors" 
             +"\nR - Shrek rescues the princess from the tower"
             +"\nG - Shrek goes away from the dragon"
@@ -104,8 +105,10 @@ public class GameMenuView extends View {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     private void purchaseItem(){
-        System.out.println("\nWhich Item do you want to purchase?");
-        System.out.println("\nSelect S-sword  A-arrow K-Knife");
+        PurchaseItemMenu myPurchase=new PurchaseItemMenu();
+        //myPurchase.doAction();
+        //System.out.println("\nWhich Item do you want to purchase?");
+        //System.out.println("\nSelect S-sword  A-arrow K-Knife");
         
     }
 

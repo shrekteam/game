@@ -77,7 +77,7 @@ public class Game implements Serializable{
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public InventoryItem[] GetInventory() {
+    public InventoryItem[] getInventory() {
         return inventory;
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
