@@ -31,7 +31,8 @@ public class GameMenuView extends View {
             +"\n|              Adventure Menu                |"
             +"\n----------------------------------------"
             +"\nV - View map"     
-            +"\nI - View list of item in inventory"
+            +"\nI - View list of item in inventory sorted by Inventory Type"
+            +"\nS - View list of item in inventory sorted by quantity in stock"
             +"\nP - Purchase an item"
             +"\nC - Evaluate the total item cost" 
             +"\nR - Shrek rescues the princess from the tower"
@@ -45,6 +46,7 @@ public class GameMenuView extends View {
         value= value.toUpperCase();
         char choice = value.charAt(0);
         Game myGame = Shrek.getCurrentGame();
+        InventoryItem[] inventory= myGame.getInventory();
         switch (choice){
             case 'V':
                 //Game myGame = Shrek.getCurrentGame();
@@ -67,8 +69,12 @@ public class GameMenuView extends View {
                 this.enterTown();
             break;
             case 'C':
-                InventoryItem[] inventory= myGame.getInventory();
+                //InventoryItem[] inventory= myGame.getInventory();
                 this.displayTotalCost(inventory);
+                break;
+            case 'S':
+                //InventoryItem[] inventory= myGame.getInventory();
+                this.viewInventoryQuantitySorted();
                 break;
             case 'E':
                 return true;
@@ -151,5 +157,21 @@ public class GameMenuView extends View {
     }
     System.out.println ("The total items cost is : "+cost);
   }
+
+    private void viewInventoryQuantitySorted() {
+        InventoryItem[] inventory=GameControl.getSortedQuantityInventoryList();
+        System.out.println("\nList of Inventory Items");
+        System.out.println("\nType"+"\t"+
+                            "Required"+"\t"+
+                             "In Stock\t"
+                            + "\"Cost for element\n");
+        for (InventoryItem inventoryItem:inventory){
+            System.out.println(inventoryItem.getInventoryType()+"\t"+
+                                inventoryItem.getRequiredAmount()+"\t\t"+
+                                inventoryItem.getQuantityInStock()+"\t\t"+
+                                inventoryItem.getInventoryCost());
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

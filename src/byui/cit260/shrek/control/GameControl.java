@@ -130,6 +130,27 @@ public class GameControl {
                
         return inventoryList;
     }
+    
+    public static InventoryItem[] getSortedQuantityInventoryList() {
+       //this function implments bubblesort, but I use the next function, InsertionSort
+        InventoryItem[] originalInventoryList = Shrek.getCurrentGame().getInventory();
+        
+        InventoryItem[] inventoryList = originalInventoryList.clone();
+        InventoryItem tempInventoryItem;
+        for(int i=0; i<inventoryList.length-1;i++) {
+            for (int j=0;j<inventoryList.length-1-i;j++){
+                if(inventoryList[j].getQuantityInStock()<inventoryList[j+1].getQuantityInStock()) {
+                        
+                            tempInventoryItem = inventoryList[j];
+                            inventoryList[j]= inventoryList[j+1];
+                            inventoryList[j+1]= tempInventoryItem;
+                }
+                
+            }
+        }
+               
+        return inventoryList;
+    }
     public int purchaseItem(InventoryItem[] inventory, String value) {
         int quantity=0;
         for (InventoryItem myItem:inventory) {
