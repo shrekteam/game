@@ -1,4 +1,5 @@
 package byui.cit260.shrek.view;
+import byui.cit260.shrek.control.GameControl;
 import byui.cit260.shrek.model.Game;
 import byui.cit260.shrek.model.InventoryItem;
 import java.util.Scanner;
@@ -18,10 +19,10 @@ public class PurchaseItemMenu extends View {
             +"\n----------------------------------------"
             +"\n|         Purchase Item Menu     |"
             +"\n----------------------------------------"
-            +"\nInsert S to purchase a Sword"
-            +"\nInsert A to purchase an Arrow "
-            +"\nInsert K to purchase a knife "
-            +"\nInsert P to purchase a Spear "
+            +"\nInsert S to purchase a Sword with cost 10"
+            +"\nInsert A to purchase an Arrow with cost 5"
+            +"\nInsert K to purchase a knife with cost 7"
+            +"\nInsert P to purchase a Spear with cost 12 "
             + "\nInsert E to exit");
             //+"\nIf the launch height is more than 10 meters you break the wall ");
     }
@@ -34,20 +35,22 @@ public class PurchaseItemMenu extends View {
         char choice = value.charAt(0);
          Game myGame = Shrek.getCurrentGame();
          InventoryItem[] inventory= myGame.getInventory();
+         GameControl myGameControl=new GameControl();
      
         switch (choice){
             case 'S':
-                this.purchaseItem(inventory,"Sword");
+                myGameControl.purchaseItem(inventory,"Sword");
                 break;
             case 'A':
-                this.purchaseItem(inventory,"Arrow");
+                myGameControl.purchaseItem(inventory,"Arrow");
                 break;
             case 'K':
-                this.purchaseItem(inventory,"Knife");
+                myGameControl.purchaseItem(inventory,"Knife");
                 break;
             case 'P':
-                this.purchaseItem(inventory,"Spear");
+                myGameControl.purchaseItem(inventory,"Spear");
                 break;
+               
             case 'E':
                 return true;
             default:
@@ -56,7 +59,7 @@ public class PurchaseItemMenu extends View {
        }
     return false;
     }
-
+/*
     public int purchaseItem(InventoryItem[] inventory, String value) {
         int quantity=0;
         for (InventoryItem myItem:inventory) {
@@ -71,7 +74,7 @@ public class PurchaseItemMenu extends View {
         }
        return quantity;
       }
-
+*/
 }
 
     

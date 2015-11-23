@@ -14,6 +14,15 @@ public class InventoryItem {
     private int quantityInStock;
     private int requiredAmount;
     private String description;
+    private int inventoryCost;
+
+    public int getInventoryCost() {
+        return inventoryCost;
+    }
+
+    public void setInventoryCost(int inventoryCost) {
+        this.inventoryCost = inventoryCost;
+    }
     
     public String getInventoryType() {
         return inventoryType;

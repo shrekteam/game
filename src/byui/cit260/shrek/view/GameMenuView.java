@@ -32,8 +32,8 @@ public class GameMenuView extends View {
             +"\n----------------------------------------"
             +"\nV - View map"     
             +"\nI - View list of item in inventory"
-            +"\nP - Purchase an Item"
-            //+"\nA - View list actors" 
+            +"\nP - Purchase an item"
+            +"\nC - Evaluate the total item cost" 
             +"\nR - Shrek rescues the princess from the tower"
             +"\nG - Shrek goes away from the dragon"
             +"\nT - Shrek enters the town breaking the wall"
@@ -44,9 +44,10 @@ public class GameMenuView extends View {
         String value=(String)obj;
         value= value.toUpperCase();
         char choice = value.charAt(0);
+        Game myGame = Shrek.getCurrentGame();
         switch (choice){
             case 'V':
-                Game myGame = Shrek.getCurrentGame();
+                //Game myGame = Shrek.getCurrentGame();
                 Map myMap = myGame.getMap();
                 this.displayMap(myMap);
                 break;
@@ -65,6 +66,10 @@ public class GameMenuView extends View {
             case 'T':
                 this.enterTown();
             break;
+            case 'C':
+                InventoryItem[] inventory= myGame.getInventory();
+                this.displayTotalCost(inventory);
+                break;
             case 'E':
                 return true;
             default:
@@ -96,11 +101,13 @@ public class GameMenuView extends View {
         System.out.println("\nList of Inventory Items");
         System.out.println("\nType"+"\t"+
                             "Required"+"\t"+
-                            "In Stock\n");
+                             "In Stock\t"
+                            + "\"Cost for element\n");
         for (InventoryItem inventoryItem:inventory){
             System.out.println(inventoryItem.getInventoryType()+"\t"+
                                 inventoryItem.getRequiredAmount()+"\t\t"+
-                                inventoryItem.getQuantityInStock());
+                                inventoryItem.getQuantityInStock()+"\t\t"+
+                                inventoryItem.getInventoryCost());
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -135,6 +142,14 @@ public class GameMenuView extends View {
         }
       
  }
- 
+
+    private void displayTotalCost(InventoryItem[] inventory) {
+        int cost=0;
+        for (InventoryItem myItem:inventory) {
+            cost = cost + myItem.getInventoryCost()*myItem.getQuantityInStock();
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    System.out.println ("The total items cost is : "+cost);
+  }
+
 }
-    

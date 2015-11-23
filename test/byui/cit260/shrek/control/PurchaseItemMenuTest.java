@@ -26,10 +26,10 @@ public class PurchaseItemMenuTest {
         System.out.println("purchaseSword");
         String value = "Sword";
         //Game myGame = Shrek.getCurrentGame();
-        GameControl myGameControl = new GameControl();
-        InventoryItem[] inventory = myGameControl.createInventoryList();
+        GameControl instance = new GameControl();
+        InventoryItem[] inventory = instance.createInventoryList();
         //InventoryItem[] inventory= myGame.getInventory();
-        PurchaseItemMenu instance = new PurchaseItemMenu();
+        //PurchaseItemMenu instance = new PurchaseItemMenu();
         int expResult = 1;
         int result = instance.purchaseItem(inventory, value);
         assertEquals(expResult, result, 0.0001);

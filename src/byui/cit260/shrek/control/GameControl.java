@@ -52,24 +52,28 @@ public class GameControl {
         sword.setInventoryType("Sword");
         sword.setQuantityInStock(0);
         sword.setRequiredAmount(0);
+        sword.setInventoryCost(10);
         inventory[Item.sword.ordinal()]=sword;
         
         InventoryItem arrow= new InventoryItem();
         arrow.setInventoryType("Arrow");
         arrow.setQuantityInStock(0);
         arrow.setRequiredAmount(0);
+        arrow.setInventoryCost(5);
         inventory[Item.arrow.ordinal()]=arrow;
         
         InventoryItem knife= new InventoryItem();
         knife.setInventoryType("Knife");
         knife.setQuantityInStock(0);
         knife.setRequiredAmount(0);
+        knife.setInventoryCost(7);
         inventory[Item.knife.ordinal()]=knife;
         
         InventoryItem spear= new InventoryItem();
         spear.setInventoryType("Spear");
         spear.setQuantityInStock(0);
         spear.setRequiredAmount(0);
+        spear.setInventoryCost(13);
         inventory[Item.spear.ordinal()]=spear;
         
     return inventory;
@@ -126,4 +130,19 @@ public class GameControl {
                
         return inventoryList;
     }
+    public int purchaseItem(InventoryItem[] inventory, String value) {
+        int quantity=0;
+        for (InventoryItem myItem:inventory) {
+             //System.out.println(myItem.getInventoryType());
+            if (myItem.getInventoryType()==value){
+                myItem.setQuantityInStock(myItem.getQuantityInStock()+1);
+               // System.out.println("sword ="+myItem.getQuantityInStock());
+                System.out.println("A"+value+" is added to the Inventory List");
+                quantity=myItem.getQuantityInStock();
+                System.out.println("Now the "+value+" number is = "+quantity);
+            }
+        }
+       return quantity;
+      }
+    
 }
