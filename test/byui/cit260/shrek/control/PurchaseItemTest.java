@@ -16,9 +16,9 @@ import shrek.Shrek;
  *
  * @author bruno
  */
-public class PurchaseItemMenuTest {
+public class PurchaseItemTest {
 
-    public PurchaseItemMenuTest() {
+    public PurchaseItemTest() {
     }
     
     @Test

@@ -19,11 +19,11 @@ public class PurchaseItemMenu extends View {
             +"\n----------------------------------------"
             +"\n|         Purchase Item Menu     |"
             +"\n----------------------------------------"
-            +"\nInsert S to purchase a Sword with cost 10"
-            +"\nInsert A to purchase an Arrow with cost 5"
-            +"\nInsert K to purchase a knife with cost 7"
-            +"\nInsert P to purchase a Spear with cost 12 "
-            + "\nInsert E to exit");
+            +"\nS to purchase a Sword with cost 10"
+            +"\nA to purchase an Arrow with cost 5"
+            +"\nK to purchase a knife with cost 7"
+            +"\nP to purchase a Spear with cost 12 "
+            + "\nE to exit");
             //+"\nIf the launch height is more than 10 meters you break the wall ");
     }
    
