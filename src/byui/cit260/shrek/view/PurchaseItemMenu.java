@@ -10,18 +10,22 @@ import shrek.Shrek;
 
 
 public class PurchaseItemMenu extends View {
-   
+
+    
     public PurchaseItemMenu(){
     //private final String MENU="\n"
         super("\n"
             +"\n----------------------------------------"
             +"\n|         Purchase Item Menu     |"
             +"\n----------------------------------------"
-            +"\nInsert S to purchase sword"
-            +"\nInsert A to purchase arrow "
+            +"\nInsert S to purchase a Sword"
+            +"\nInsert A to purchase an Arrow "
+            +"\nInsert K to purchase a knife "
+            +"\nInsert P to purchase a Spear "
             + "\nInsert E to exit");
             //+"\nIf the launch height is more than 10 meters you break the wall ");
-    }    
+    }
+   
     @Override
     public boolean doAction(Object obj) {
         String value=(String)obj;
@@ -33,14 +37,17 @@ public class PurchaseItemMenu extends View {
      
         switch (choice){
             case 'S':
-               
-                this.purchaseSword(inventory);
-               
+                this.purchaseItem(inventory,"Sword");
                 break;
             case 'A':
-                this.purchaseArrow(inventory);
+                this.purchaseItem(inventory,"Arrow");
                 break;
-            
+            case 'K':
+                this.purchaseItem(inventory,"Knife");
+                break;
+            case 'P':
+                this.purchaseItem(inventory,"Spear");
+                break;
             case 'E':
                 return true;
             default:
@@ -50,31 +57,21 @@ public class PurchaseItemMenu extends View {
     return false;
     }
 
-    private void purchaseSword(InventoryItem[] inventory) {
+    public int purchaseItem(InventoryItem[] inventory, String value) {
+        int quantity=0;
         for (InventoryItem myItem:inventory) {
              //System.out.println(myItem.getInventoryType());
-            if (myItem.getInventoryType()=="Sword"){
+            if (myItem.getInventoryType()==value){
                 myItem.setQuantityInStock(myItem.getQuantityInStock()+1);
                // System.out.println("sword ="+myItem.getQuantityInStock());
-                System.out.println("A Sword is added to the Invetory List");
-                System.out.println("Now the sword number is = "+myItem.getQuantityInStock());
+                System.out.println("A"+value+" is added to the Inventory List");
+                quantity=myItem.getQuantityInStock();
+                System.out.println("Now the "+value+" number is = "+quantity);
             }
-                
         }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+       return quantity;
+      }
 
-    private void purchaseArrow(InventoryItem[] inventory) {
-        for (InventoryItem myItem:inventory) {
-             //System.out.println(myItem.getInventoryType());
-            if (myItem.getInventoryType()=="Arrow"){
-                myItem.setQuantityInStock(myItem.getQuantityInStock()+1);
-                System.out.println("An arrow is added to the Inventory List");
-                System.out.println("Now the arrows number is = "+myItem.getQuantityInStock());
-            }
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-}
 }
 
     

@@ -50,25 +50,25 @@ public class GameControl {
         
         InventoryItem sword= new InventoryItem();
         sword.setInventoryType("Sword");
-        sword.setQuantityInStock(2);
+        sword.setQuantityInStock(0);
         sword.setRequiredAmount(0);
         inventory[Item.sword.ordinal()]=sword;
         
         InventoryItem arrow= new InventoryItem();
         arrow.setInventoryType("Arrow");
-        arrow.setQuantityInStock(2);
+        arrow.setQuantityInStock(0);
         arrow.setRequiredAmount(0);
         inventory[Item.arrow.ordinal()]=arrow;
         
         InventoryItem knife= new InventoryItem();
         knife.setInventoryType("Knife");
-        knife.setQuantityInStock(2);
+        knife.setQuantityInStock(0);
         knife.setRequiredAmount(0);
         inventory[Item.knife.ordinal()]=knife;
         
         InventoryItem spear= new InventoryItem();
         spear.setInventoryType("Spear");
-        spear.setQuantityInStock(2);
+        spear.setQuantityInStock(0);
         spear.setRequiredAmount(0);
         inventory[Item.spear.ordinal()]=spear;
         
