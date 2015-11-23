@@ -25,7 +25,7 @@ public class MainMenuView extends View{
             +"\nS - Save the game"
             +"\nE - Exit"
             +"\n----------------------------------------");
-        }
+    }
     @Override
     public boolean doAction(Object obj) {
         String value=(String)obj;
