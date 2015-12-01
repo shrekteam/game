@@ -79,7 +79,7 @@ public class GameMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("Enter the value");
+                System.out.println("Enter the right value");
                 break;              
        }
     return false;
@@ -88,6 +88,8 @@ public class GameMenuView extends View {
     private void rescuePrincess() {
         System.out.println("***The goal is to rescue the Princess");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        WeaponMenuView myWeaponMenu= new WeaponMenuView();
+        myWeaponMenu.display();
     }
     
 

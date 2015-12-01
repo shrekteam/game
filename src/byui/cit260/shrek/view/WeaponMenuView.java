@@ -5,18 +5,24 @@
  */
 package byui.cit260.shrek.view;
 
-import byui.cit260.shrek.control.PathwayControl;
+/**
+ *
+ * @author bruno
+ */
+//import byui.cit260.shrek.control.WeaponControl;
+import byui.cit260.shrek.control.WeaponControl;
+import byui.cit260.shrek.exceptions.WeaponControlException;
 //import byui.cit260.shrek.control.WallControl;
-import byui.cit260.shrek.exceptions.PathwayControlException;
+//import byui.cit260.shrek.exceptions.PathwayControlException;
 
 /**
  *
  * @author bruno
  */
-public class PathwayMenuView extends View{
+public class WeaponMenuView extends View{
     
    
-    public PathwayMenuView(){
+    public WeaponMenuView(){
     //private final String MENU="\n"
       
         super("\n"
@@ -25,53 +31,52 @@ public class PathwayMenuView extends View{
 
     //  private final String MENU="\n"
             +"\n----------------------------------------"
-            +"\n|         Dragon escaping adventure      |"
+            +"\n|         Princess rescueing adventure      |"
             +"\n----------------------------------------"
-            +"\nThe goal of this adventure is to escape from the dragon jumping on pathway"
-            +"\nSo you have to choose the slope and the speed of the jump. ");
+            +"\nThe goal of this adventure is to rescue the princess climbing to the tower"
+            +"\nSo you have to choose the slope and the speed of the weapon to go over the tower. ");
             
     }
     @Override
     public void display() {
         
-        
+        double slope=0.0;
+        double speed=0.0;
         boolean repeatDisplay=false;
         //System.out.println(MENU);
         System.out.println(super.getPromptMessage());
-        double slope=0.0;
-        double speed=0.0;
         do {
-            
-            System.out.println("Insert the slope within O to 90 degrees:");      
-            //System.out.println(MENUslope);
+            System.out.println("Insert the slope within O to 90 degrees:");  
             try{
             slope = Double.parseDouble(this.getInput());
             }catch(NumberFormatException nf) {
-            System.out.println("You must enter a valid number");
-            return;}
+            System.out.println("Enter a valid number");return;}
             catch (Throwable te){
             System.out.println(te.getMessage());
             te.printStackTrace();
             return;
             }
             
+            //System.out.println(MENUslope);
             //slope = Double.valueOf(this.getInput());
-            System.out.println("Insert the speed within 1 m/s and 10 m/s:");
+            System.out.println("Insert the speed within 1 m/s and 20 m/s:");
             try{
             speed = Double.parseDouble(this.getInput());
             }catch(NumberFormatException nf) {
-            System.out.println("You must enter a valid number");return;}
+            System.out.println("Enter a valid number");return;}
             catch (Throwable te){
             System.out.println(te.getMessage());
             te.printStackTrace();
-            return;
-            }
+            return;}
+            
+            repeatDisplay=this.doAction(slope,speed);}
+            
             
             //System.out.println(MENUdistance);
             //speed = Double.valueOf(this.getInput());
             //selection = input.charAt(0);
-            repeatDisplay=this.doAction(slope,speed);
-        } while(repeatDisplay==true);
+            
+        while(repeatDisplay==true);
     }
     
     @Override
@@ -83,25 +88,26 @@ public class PathwayMenuView extends View{
     
     boolean repeat=true;    
     
-      PathwayControl myPathwayControl = new PathwayControl();
-      double myDistance=0.0;
+      WeaponControl myWeaponControl = new WeaponControl();
+      double myHeight=0.0;
        try {
-       myDistance = myPathwayControl.calcJumpDistance(mySpeed, mySlope);
-       }catch(PathwayControlException pce) {
-               System.out.println(pce.getMessage());
+       myHeight = myWeaponControl.calcLaunchHeight(mySpeed, mySlope);
+       } catch(WeaponControlException wce) {
+               System.out.println(wce.getMessage());
        }
      
-       myDistance=Math.round(myDistance*100);
-       myDistance=myDistance/100;
-       System.out.println("The distance is: "+myDistance);
+       myHeight=Math.round(myHeight*100);
+       myHeight=myHeight/100;
+       System.out.println("The height is: "+myHeight);
     
-       if (myDistance>10)
-        {System.out.println("\nYou escaped from the dragon!!");
+       if (myHeight>10)
+        {System.out.println("\nYou climbed the tower!!");
         repeat=false;
         }
-        else {System.out.println("\nRetry values because the distance must be > 10m !!");}
+        else {System.out.println("\nRetry values because the height must be > 10m !!");}
     return repeat;
     
     }
     
 }   
+

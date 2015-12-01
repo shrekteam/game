@@ -6,6 +6,8 @@
 package byui.cit260.shrek.control;
 //import byui.cit260.shrek.model;
 
+import byui.cit260.shrek.exceptions.PathwayControlException;
+import byui.cit260.shrek.exceptions.WallControlException;
 import byui.cit260.shrek.model.Wall;
 
 /**
@@ -13,11 +15,11 @@ import byui.cit260.shrek.model.Wall;
  * @author bruno
  */
 public class WallControl {
-    public double calcLaunchHeightArrow(double slope, double distance){
+    public double calcLaunchHeightArrow(double slope, double distance)throws WallControlException{
             double height;
            // if (speed <= 0 || speed > 30){ return  -1; }
-            if (slope <0 || slope > 90) { return  -1; }
-            if (distance<10 || distance>50){ return  -1; }
+            if (slope <0 || slope > 90){ throw new WallControlException("Slope must be  between 0 and 90, please input right values");}
+            if (distance<10 || distance>50){ throw new WallControlException("Distance must be between 10 and 50, please input right values");}
             double evalTilt;
             evalTilt = Math.sin(Math.toRadians(slope));
             height = distance * evalTilt*Math.sqrt((1- evalTilt*evalTilt));

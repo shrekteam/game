@@ -17,6 +17,12 @@ import byui.cit260.shrek.model.Weapon;
 import byui.cit260.shrek.control.WallControl;
 import byui.cit260.shrek.model.Game;
 import byui.cit260.shrek.view.StartProgramView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -25,13 +31,68 @@ import byui.cit260.shrek.view.StartProgramView;
 public class Shrek {
     private static Game currentGame = null;
     private static Player player = null;
+    private static  PrintWriter outFile = null;
+    private static BufferedReader inFile = null;
+    private static  PrintWriter logFile = null;
+
+    public static PrintWriter getLogFile() {
+        return logFile;
+    }
+
+    public static void setLogFile(PrintWriter logFile) {
+        Shrek.logFile = logFile;
+    }
+    public static PrintWriter getOutFile() {
+        return outFile;
+    }
+
+    public static void setOutFile(PrintWriter outFile) {
+        Shrek.outFile = outFile;
+    }
+
+    public static BufferedReader getInFile() {
+        return inFile;
+    }
+
+    public static void setInFile(BufferedReader inFile) {
+        Shrek.inFile = inFile;
+    }
+    
+    
     
     public static void main (String[] args) {
+        
             
-            StartProgramView startProgramView = new StartProgramView();
-            startProgramView.startProgram();
             
-            }  
+            try {
+                Shrek.inFile = new BufferedReader(new InputStreamReader(System.in));
+                Shrek.outFile = new PrintWriter(System.out, true);
+                String filePath="log.txt";
+                Shrek.logFile = new PrintWriter (filePath);
+                StartProgramView startProgramView = new StartProgramView();
+                startProgramView.startProgram();
+            
+            }
+            catch (Throwable te ){
+                System.out.println(te.getMessage());
+                te.printStackTrace();
+                //startProgramView.startProgram();
+            }
+            finally{
+                try {
+                    if(Shrek.inFile!=null)
+                    Shrek.inFile.close();
+                    if(Shrek.outFile!=null)
+                        Shrek.outFile.close();
+                } catch (IOException ex) {
+                    System.out.println("Error closing files");
+                    //Logger.getLogger(Shrek.class.getName()).log(Level.SEVERE, null, ex);
+                    return;
+                }
+                
+            }
+            
+    }
     public static Game getCurrentGame() {
         return currentGame;
     }

@@ -7,6 +7,8 @@ package byui.cit260.shrek.view;
 
 import static byui.cit260.shrek.view.GameMenuView.gameMenu;
 import byui.cit260.shrek.control.GameControl;
+import byui.cit260.shrek.exceptions.MapControlException;
+//import byui.cit260.shrek.exceptions.MapControlExceptions;
 import byui.cit260.shrek.view.MainMenuView;
 import java.util.Scanner;
 import shrek.Shrek;
@@ -47,18 +49,26 @@ public class MainMenuView extends View{
             case 'E':
                 return true;
             default:
-                System.out.println("Enter the value");
+                System.out.println("Enter the right value");
                 break;              
        }
-        return true;
+        return false;
     }
 
     private void startNewGame() {
        // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        GameControl.createNewGame(Shrek.getPlayer());
+       try{
+            GameControl.createNewGame(Shrek.getPlayer());
+        } catch (MapControlException mce){
+            System.out.println(mce.getMessage());
+            return;
+        } catch (Throwable te){
+        System.out.println(te.getMessage());
+        te.printStackTrace();
+        return;
+        }
         GameMenuView.gameMenu=new GameMenuView();
         gameMenu.display();
-     
     }
 
     private void startExistingGame() {

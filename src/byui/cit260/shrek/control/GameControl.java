@@ -14,6 +14,7 @@ import byui.cit260.shrek.model.SceneType;
 import byui.cit260.shrek.model.Wall;
 import byui.cit260.shrek.model.Weapon;
 import shrek.Shrek;
+import byui.cit260.shrek.exceptions.MapControlException;
 
 /**
  *
@@ -22,7 +23,9 @@ import shrek.Shrek;
 public class GameControl {
     private static Object mapControl;
     
-    public static void createNewGame(Player player) {
+    public static void createNewGame(Player player) 
+        throws MapControlException{
+        
         Game game = new Game();
         Shrek.setCurrentGame(game);
         game.setPlayer(player);
@@ -165,5 +168,4 @@ public class GameControl {
         }
        return quantity;
       }
-    
-}
+    }

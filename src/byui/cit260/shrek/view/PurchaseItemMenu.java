@@ -54,7 +54,7 @@ public class PurchaseItemMenu extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("Enter the value");
+                System.out.println("Enter the right value");
                 break;              
        }
     return false;

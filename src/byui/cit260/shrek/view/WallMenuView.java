@@ -9,6 +9,7 @@ import static byui.cit260.shrek.view.GameMenuView.gameMenu;
 import java.util.Scanner;
 import shrek.Shrek;
 import byui.cit260.shrek.control.WallControl;
+import byui.cit260.shrek.exceptions.WallControlException;
 import byui.cit260.shrek.model.Wall;
 
 public class WallMenuView extends View{
@@ -27,7 +28,6 @@ public class WallMenuView extends View{
             +"\nSo you have to choose the slope and the distance of the launch. "
             +"\nIf the launch height is more than 10 meters you break the wall ");
     }    
-        
     private final String MENUslope=     
             "Insert the slope within O to 90 degrees:";
           
@@ -36,17 +36,37 @@ public class WallMenuView extends View{
     @Override
     public void display() {
         
-        double slope;
-        double distance;
+        double slope=0;
+        double distance=0;
         boolean repeatDisplay=false;
         //System.out.println(MENU);
         System.out.println(super.getPromptMessage());
         do {
-            
             System.out.println(MENUslope);
-            slope = Double.valueOf(this.getInput());
+            try{
+            slope = Double.parseDouble(this.getInput());
+            }catch(NumberFormatException nf) {
+                System.out.println("You must enter a valid number");
+                //System.out.println(MENUslope);
+                return;
+            }
+            catch (Throwable te){
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            return;
+            }
             System.out.println(MENUdistance);
-            distance = Double.valueOf(this.getInput());
+            try{
+            distance = Double.parseDouble(this.getInput());
+            }catch(NumberFormatException nf) {
+                System.out.println("You must enter a valid number");
+                return;
+            }
+            catch (Throwable te){
+            System.out.println(te.getMessage());
+            te.printStackTrace();
+            return;
+            }
             //selection = input.charAt(0);
             repeatDisplay=this.doAction(slope,distance);
         } while(repeatDisplay==true);
@@ -77,9 +97,13 @@ public class WallMenuView extends View{
     double myDistance=(double)obj2;
     
     boolean repeat=true;    
-    double myHeight;
+    double myHeight=0;
        WallControl myWallControl = new WallControl();
+       try {
        myHeight= myWallControl.calcLaunchHeightArrow(mySlope, myDistance);
+       }catch(WallControlException wce) {
+               System.out.println(wce.getMessage());
+       }
        //myHeight1=1000*myHeight;
        myHeight=Math.round(myHeight*100);
        myHeight=myHeight/100;

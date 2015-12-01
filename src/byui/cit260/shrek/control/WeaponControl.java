@@ -5,19 +5,22 @@
  */
 package byui.cit260.shrek.control;
 
+import byui.cit260.shrek.exceptions.WeaponControlException;
+
 /**
  *
  * @author bruno
  */
 public class WeaponControl {
-    public double calcLaunchHeight(double speed, double slope){
+    public double calcLaunchHeight(double speed, double slope)throws WeaponControlException{
             final double GRAVITY=9.80665;
             //gravity acceleration
           
-            double height;
-            double evalTilt;
-            if (speed<0 || speed > 10) { return  -1; }
-            if (slope<0 || slope>90){ return  -1; }
+            double height=0.0;
+            double evalTilt=0.0;
+            if (speed<0 || speed > 20|| slope<0 || slope>90){throw new 
+        WeaponControlException("Speed must be between 0 and 20,"
+                 + " Slope between 0 and 90, please input right values");}
             //slope is in degrees
             evalTilt = Math.sin(Math.toRadians(slope));
             height = speed * speed * evalTilt * evalTilt/(2*GRAVITY);

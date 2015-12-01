@@ -17,6 +17,14 @@ public class Location {
     private boolean visited;
     private Scene scene;
     private ArrayList<Actor> actors;
+
+    public ArrayList<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(ArrayList<Actor> actors) {
+        this.actors = actors;
+    }
     
     public void setRow(int row) {
         this.row = row;
