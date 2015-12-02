@@ -18,8 +18,7 @@ public class PathwayControl {
         double evalTilt;
             //gravity acceleration
          if (speed<0 || speed > 10 ||slope<0 || slope>90) { 
-         throw new PathwayControlException("Speed must be between 0 and 10,"
-                 + " Slope between 0 and 90, please input right values");}
+         throw new PathwayControlException("Slope must be between 0 and 90,Speed must be between 0 and 10, please input right values");}
                
          //if (slope<0 || slope>90){ return  -1; }
          evalTilt = Math.sin(Math.toRadians(2*slope));

@@ -19,8 +19,7 @@ public class WeaponControl {
             double height=0.0;
             double evalTilt=0.0;
             if (speed<0 || speed > 20|| slope<0 || slope>90){throw new 
-        WeaponControlException("Speed must be between 0 and 20,"
-                 + " Slope between 0 and 90, please input right values");}
+        WeaponControlException("Slope must be between 0 and 90,Speed must be between 0 and 20, please input right values");}
             //slope is in degrees
             evalTilt = Math.sin(Math.toRadians(slope));
             height = speed * speed * evalTilt * evalTilt/(2*GRAVITY);
