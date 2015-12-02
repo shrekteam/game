@@ -29,10 +29,10 @@ public class WallMenuView extends View{
             +"\nIf the launch height is more than 10 meters you break the wall ");
     }    
     private final String MENUslope=     
-            "Insert the slope within O to 90 degrees:";
+            "Insert the slope within O to 90 degrees or enter E to Exit";
           
     private final String MENUdistance=     
-            "Insert the distance within 10 and 50 meters:";
+            "Insert the distance within 10 and 50 meters or enter E to Exit";
     @Override
     public void display() {
         
@@ -42,31 +42,44 @@ public class WallMenuView extends View{
         //System.out.println(MENU);
         System.out.println(super.getPromptMessage());
         do {
+          boolean value1=true;
+          boolean value2=true;
+          while(value1==true) { 
             System.out.println(MENUslope);
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
             try{
-            slope = Double.parseDouble(this.getInput());
+            slope = Double.parseDouble(value);
+            value1=false;
             }catch(NumberFormatException nf) {
-                System.out.println("You must enter a valid number");
+                System.out.println("You must enter a valid number.Try again or enter E to Exit");
                 //System.out.println(MENUslope);
-                return;
+                
             }
             catch (Throwable te){
             System.out.println(te.getMessage());
             te.printStackTrace();
-            return;
+            //return;
             }
+          }
+          while(value2==true) {
             System.out.println(MENUdistance);
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
             try{
-            distance = Double.parseDouble(this.getInput());
+            distance = Double.parseDouble(value);
+            value2=false;
             }catch(NumberFormatException nf) {
-                System.out.println("You must enter a valid number");
-                return;
+                System.out.println("You must enter a valid number.Try again or enter E to Exit");
+                
+                //return;
             }
             catch (Throwable te){
             System.out.println(te.getMessage());
             te.printStackTrace();
-            return;
+            //return;
             }
+          }
             //selection = input.charAt(0);
             repeatDisplay=this.doAction(slope,distance);
         } while(repeatDisplay==true);

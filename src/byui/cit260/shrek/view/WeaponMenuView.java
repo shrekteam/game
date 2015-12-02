@@ -43,40 +43,46 @@ public class WeaponMenuView extends View{
         double slope=0.0;
         double speed=0.0;
         boolean repeatDisplay=false;
+        
         //System.out.println(MENU);
         System.out.println(super.getPromptMessage());
-        do {
-            System.out.println("Insert the slope within O to 90 degrees:");  
-            try{
-            slope = Double.parseDouble(this.getInput());
-            }catch(NumberFormatException nf) {
-            System.out.println("Enter a valid number");return;}
-            catch (Throwable te){
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            return;
-            }
+        do {  
+            boolean value1=true;
+            boolean value2=true;
+          
+            while(value1==true) {
+            System.out.println("Insert the slope within O to 90 degrees or enter E to Exit");
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
             
+             try{
+                slope = Double.parseDouble(value);
+                value1=false;
+             }catch(NumberFormatException nf) {
+                System.out.println("Enter a valid number.Try again or enter E to Exit");}
+             catch (Throwable te){
+                System.out.println(te.getMessage());
+                te.printStackTrace();
+             }
+            }
             //System.out.println(MENUslope);
             //slope = Double.valueOf(this.getInput());
-            System.out.println("Insert the speed within 1 m/s and 20 m/s:");
-            try{
-            speed = Double.parseDouble(this.getInput());
-            }catch(NumberFormatException nf) {
-            System.out.println("Enter a valid number");return;}
-            catch (Throwable te){
-            System.out.println(te.getMessage());
-            te.printStackTrace();
-            return;}
-            
-            repeatDisplay=this.doAction(slope,speed);}
-            
-            
-            //System.out.println(MENUdistance);
-            //speed = Double.valueOf(this.getInput());
-            //selection = input.charAt(0);
-            
-        while(repeatDisplay==true);
+            while(value2==true) {
+              System.out.println("Insert the speed within 1 m/s and 20 m/s or enter E to Exit");
+              String value = this.getInput();
+              if (value.equals("E")||value.equals("e"))return;
+              try{
+                    speed = Double.parseDouble(value);
+                    value2=false;
+                }catch(NumberFormatException nf) {
+                 System.out.println("Enter a valid number.Try again or enter E to Exit");}
+                catch (Throwable te){
+                System.out.println(te.getMessage());
+                te.printStackTrace();
+                }
+            } 
+            repeatDisplay=this.doAction(slope,speed);
+        } while(repeatDisplay==true);
     }
     
     @Override

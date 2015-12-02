@@ -41,36 +41,40 @@ public class PathwayMenuView extends View{
         double slope=0.0;
         double speed=0.0;
         do {
-            
-            System.out.println("Insert the slope within O to 90 degrees:");      
-            //System.out.println(MENUslope);
+          boolean value1=true;
+          boolean value2=true;
+          while(value1==true) { 
+            System.out.println("Insert the slope within O to 90 degrees or enter E to Exit"); 
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
             try{
-            slope = Double.parseDouble(this.getInput());
+            slope = Double.parseDouble(value);
+            value1=false;
             }catch(NumberFormatException nf) {
-            System.out.println("You must enter a valid number");
-            return;}
+            System.out.println("You must enter a valid number.Try again or enter E to Exit");
+            }
             catch (Throwable te){
             System.out.println(te.getMessage());
             te.printStackTrace();
-            return;
             }
-            
+          } 
             //slope = Double.valueOf(this.getInput());
+          while(value2==true) {
             System.out.println("Insert the speed within 1 m/s and 10 m/s:");
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
             try{
-            speed = Double.parseDouble(this.getInput());
+            speed = Double.parseDouble(value);
+            value2=false;
             }catch(NumberFormatException nf) {
-            System.out.println("You must enter a valid number");return;}
+            System.out.println("You must enter a valid number.Try again or enter E to Exit ");}
             catch (Throwable te){
             System.out.println(te.getMessage());
             te.printStackTrace();
-            return;
             }
             
-            //System.out.println(MENUdistance);
-            //speed = Double.valueOf(this.getInput());
-            //selection = input.charAt(0);
-            repeatDisplay=this.doAction(slope,speed);
+         }
+         repeatDisplay=this.doAction(slope,speed);
         } while(repeatDisplay==true);
     }
     

@@ -5,7 +5,10 @@
  */
 package byui.cit260.shrek.view;
 
+import java.io.BufferedReader;
+import java.io.PrintWriter;
 import java.util.Scanner;
+import shrek.Shrek;
 
 /**
  *
@@ -13,6 +16,8 @@ import java.util.Scanner;
  */
 public abstract class View implements ViewInterface{
     protected String promptMessage;
+    protected final BufferedReader keyboard= Shrek.getInFile();
+    protected final PrintWriter console= Shrek.getOutFile();
 
     public String getPromptMessage() {
         return promptMessage;
@@ -37,11 +42,12 @@ public abstract class View implements ViewInterface{
   }  
   @Override
   public String getInput(){
-      Scanner keyboard = new Scanner (System.in);
+      //Scanner keyboard = new Scanner (System.in);
       boolean valid = false;
       String value = null;
+   try{
       while(!valid){
-          value=keyboard.nextLine();
+          value=this.keyboard.readLine();
           value=value.trim();
           if(value.length()<1){
               System.out.println("You must enter a value");
@@ -49,7 +55,11 @@ public abstract class View implements ViewInterface{
           }
           break;
       }
-      return value;
-      
+      }catch (Exception e){
+             System.out.println("Error reading input:"+e.getMessage());
+           }
+   return value;
+  
   }
+
 }
