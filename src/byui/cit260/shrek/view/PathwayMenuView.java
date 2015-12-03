@@ -54,7 +54,7 @@ public class PathwayMenuView extends View{
             ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit");
             }
             catch (Throwable te){
-            this.console.println(te.getMessage());
+            ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             }
           } 
@@ -69,7 +69,7 @@ public class PathwayMenuView extends View{
             }catch(NumberFormatException nf) {
             ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit ");}
             catch (Throwable te){
-            this.console.println(te.getMessage());
+            ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             }
             

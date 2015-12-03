@@ -99,7 +99,7 @@ public class WeaponMenuView extends View{
        try {
        myHeight = myWeaponControl.calcLaunchHeight(mySpeed, mySlope);
        } catch(WeaponControlException wce) {
-               this.console.println(wce.getMessage());
+               ErrorView.display(this.getClass().getName(),wce.getMessage());
        }
      
        myHeight=Math.round(myHeight*100);
