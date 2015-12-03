@@ -40,24 +40,24 @@ public class WallMenuView extends View{
         double distance=0;
         boolean repeatDisplay=false;
         //System.out.println(MENU);
-        System.out.println(super.getPromptMessage());
+        this.console.println(super.getPromptMessage());
         do {
           boolean value1=true;
           boolean value2=true;
           while(value1==true) { 
-            System.out.println(MENUslope);
+            this.console.println(MENUslope);
             String value = this.getInput();
             if (value.equals("E")||value.equals("e"))return;
             try{
             slope = Double.parseDouble(value);
             value1=false;
             }catch(NumberFormatException nf) {
-                System.out.println("You must enter a valid number.Try again or enter E to Exit");
+                ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit");
                 //System.out.println(MENUslope);
                 
             }
             catch (Throwable te){
-            System.out.println(te.getMessage());
+            ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             //return;
             }
@@ -70,12 +70,12 @@ public class WallMenuView extends View{
             distance = Double.parseDouble(value);
             value2=false;
             }catch(NumberFormatException nf) {
-                System.out.println("You must enter a valid number.Try again or enter E to Exit");
+                ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit");
                 
                 //return;
             }
             catch (Throwable te){
-            System.out.println(te.getMessage());
+            ErrorView.display(this.getClass().getName(),te.getMessage());
             te.printStackTrace();
             //return;
             }
@@ -84,25 +84,7 @@ public class WallMenuView extends View{
             repeatDisplay=this.doAction(slope,distance);
         } while(repeatDisplay==true);
     }
- /*
-    private String getInput() {
-        
-        boolean valid=false;
-        String value=null;
-        Scanner keyboard = new Scanner(System.in);
-        while(!valid){
-            System.out.println("Enter the value");
-            value=keyboard.nextLine();
-            value=value.trim();
-            //if value.parseDouble(value)
-            if(value.length()<1) {
-                System.out.println("Invalid value-it must not be blank");
-                continue;}
-            break;
-            }
-        return value;
-        }
-   */ @Override
+  @Override
     public boolean doAction(Object obj) {return false;}
     
     public boolean doAction(Object obj, Object obj2) {
@@ -115,16 +97,16 @@ public class WallMenuView extends View{
        try {
        myHeight= myWallControl.calcLaunchHeightArrow(mySlope, myDistance);
        }catch(WallControlException wce) {
-               System.out.println(wce.getMessage());
+               ErrorView.display(this.getClass().getName(),wce.getMessage());
        }
        //myHeight1=1000*myHeight;
        myHeight=Math.round(myHeight*100);
        myHeight=myHeight/100;
-       System.out.println("The height is: "+myHeight);
+       this.console.println("The height is: "+myHeight);
        if (myWallControl.isWallBroken(myHeight)==false)
-           System.out.println("Please choose again the slope and the distance to have an height >10 meters");
+           this.console.println("Please choose again the slope and the distance to have an height >10 meters");
               
-       else {System.out.println("You broke the wall and Shrek enters the town!!!"); 
+       else {this.console.println("You broke the wall and Shrek enters the town!!!"); 
              repeat=false;}
        return repeat;
     

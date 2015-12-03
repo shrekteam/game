@@ -38,28 +38,28 @@ public class HelpMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("Enter the right value");
+                this.console.println("Enter the right value");
                 break;              
        }
     return false;
     }
     
     private void explainGoal() {
-        System.out.println("***The goal is to overcome the adventures");
+        this.console.println("***The goal is to overcome the adventures");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 
     private void explainChoose() {
-        System.out.println("***You can choose among three adventures****");
-        System.out.println("***Selecting the numbers 1-2-3-****");
+        this.console.println("***You can choose among three adventures****");
+        this.console.println("***Selecting the numbers 1-2-3-****");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     private void explainInputs() {
-        System.out.println("***The inputs are values to make calculations");
-        System.out.println("***For example you can choose");
-        System.out.println("***speed(mph)=10 and angle(degrees)=25");
+        this.console.println("***The inputs are values to make calculations");
+        this.console.println("***For example you can choose");
+        this.console.println("***speed(mph)=10 and angle(degrees)=25");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
       

@@ -37,39 +37,39 @@ public class PathwayMenuView extends View{
         
         boolean repeatDisplay=false;
         //System.out.println(MENU);
-        System.out.println(super.getPromptMessage());
+        this.console.println(super.getPromptMessage());
         double slope=0.0;
         double speed=0.0;
         do {
           boolean value1=true;
           boolean value2=true;
           while(value1==true) { 
-            System.out.println("Insert the slope within O to 90 degrees or enter E to Exit"); 
+            this.console.println("Insert the slope within O to 90 degrees or enter E to Exit"); 
             String value = this.getInput();
             if (value.equals("E")||value.equals("e"))return;
             try{
             slope = Double.parseDouble(value);
             value1=false;
             }catch(NumberFormatException nf) {
-            System.out.println("You must enter a valid number.Try again or enter E to Exit");
+            ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit");
             }
             catch (Throwable te){
-            System.out.println(te.getMessage());
+            this.console.println(te.getMessage());
             te.printStackTrace();
             }
           } 
             //slope = Double.valueOf(this.getInput());
           while(value2==true) {
-            System.out.println("Insert the speed within 1 m/s and 10 m/s:");
+            this.console.println("Insert the speed within 1 m/s and 10 m/s:");
             String value = this.getInput();
             if (value.equals("E")||value.equals("e"))return;
             try{
             speed = Double.parseDouble(value);
             value2=false;
             }catch(NumberFormatException nf) {
-            System.out.println("You must enter a valid number.Try again or enter E to Exit ");}
+            ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit ");}
             catch (Throwable te){
-            System.out.println(te.getMessage());
+            this.console.println(te.getMessage());
             te.printStackTrace();
             }
             
@@ -92,18 +92,18 @@ public class PathwayMenuView extends View{
        try {
        myDistance = myPathwayControl.calcJumpDistance(mySpeed, mySlope);
        }catch(PathwayControlException pce) {
-               System.out.println(pce.getMessage());
+               ErrorView.display(this.getClass().getName(),pce.getMessage());
        }
      
        myDistance=Math.round(myDistance*100);
        myDistance=myDistance/100;
-       System.out.println("The distance is: "+myDistance);
+       this.console.println("The distance is: "+myDistance);
     
        if (myDistance>10)
-        {System.out.println("\nYou escaped from the dragon!!");
+        {this.console.println("\nYou escaped from the dragon!!");
         repeat=false;
         }
-        else {System.out.println("\nRetry values because the distance must be > 10m !!");}
+        else {this.console.println("\nRetry values because the distance must be > 10m !!");}
     return repeat;
     
     }

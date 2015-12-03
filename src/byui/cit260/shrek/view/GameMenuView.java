@@ -79,14 +79,14 @@ public class GameMenuView extends View {
             case 'E':
                 return true;
             default:
-                System.out.println("Enter the right value");
+                this.console.println("Enter the right value");
                 break;              
        }
     return false;
     }
     
     private void rescuePrincess() {
-        System.out.println("***The goal is to rescue the Princess");
+        this.console.println("***The goal is to rescue the Princess");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         WeaponMenuView myWeaponMenu= new WeaponMenuView();
         myWeaponMenu.display();
@@ -94,7 +94,7 @@ public class GameMenuView extends View {
     
 
     private void goAway() {
-        System.out.println("***The goal is to escape from the dragon***");
+        this.console.println("***The goal is to escape from the dragon***");
         PathwayMenuView myPathwayMenu= new PathwayMenuView();
         myPathwayMenu.display();
     }
@@ -106,13 +106,13 @@ public class GameMenuView extends View {
 
     private void viewInventory() {
         InventoryItem[] inventory=GameControl.getInsertionSortedInventoryList();
-        System.out.println("\nList of Inventory Items");
-        System.out.println("\nType"+"\t"+
+        this.console.println("\nList of Inventory Items");
+        this.console.println("\nType"+"\t"+
                             "Required"+"\t"+
                              "In Stock\t"
                             + "\"Cost for element\n");
         for (InventoryItem inventoryItem:inventory){
-            System.out.println(inventoryItem.getInventoryType()+"\t"+
+            this.console.println(inventoryItem.getInventoryType()+"\t"+
                                 inventoryItem.getRequiredAmount()+"\t\t"+
                                 inventoryItem.getQuantityInStock()+"\t\t"+
                                 inventoryItem.getInventoryCost());
@@ -130,23 +130,23 @@ public class GameMenuView extends View {
     private void displayMap(Map map) {
                         
         Location[][] locations = map.getLocations();
-        System.out.println("Shrek's Adventures Map");
+        this.console.println("Shrek's Adventures Map");
         for(int i=0;i<locations.length;i++){
-            System.out.println("row : "+i+" -");
+            this.console.println("row : "+i+" -");
             //System.out.println(locations[i][0]);
             for (int j=0; j<locations[i].length;j++){ 
-                System.out.print(j+"|");
+                this.console.print(j+"|");
                 
                 Location location = locations[i][j];
                 if (location.isVisited()){
                        Scene myScene=location.getScene();
-                       System.out.println(myScene.getMapSymbol());
+                       this.console.println(myScene.getMapSymbol());
                 }
-                else System.out.println("??");
-                System.out.println("|");
+                else this.console.println("??");
+                this.console.println("|");
            
             }
-            System.out.println("-");       
+            this.console.println("-");       
         }
       
  }
@@ -157,18 +157,18 @@ public class GameMenuView extends View {
             cost = cost + myItem.getInventoryCost()*myItem.getQuantityInStock();
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    System.out.println ("The total items cost is : "+cost);
+    this.console.println ("The total items cost is : "+cost);
   }
 
     private void viewInventoryQuantitySorted() {
         InventoryItem[] inventory=GameControl.getSortedQuantityInventoryList();
-        System.out.println("\nList of Inventory Items");
-        System.out.println("\nType"+"\t"+
+        this.console.println("\nList of Inventory Items");
+        this.console.println("\nType"+"\t"+
                             "Required"+"\t"+
                              "In Stock\t"
                             + "\"Cost for element\n");
         for (InventoryItem inventoryItem:inventory){
-            System.out.println(inventoryItem.getInventoryType()+"\t"+
+            this.console.println(inventoryItem.getInventoryType()+"\t"+
                                 inventoryItem.getRequiredAmount()+"\t\t"+
                                 inventoryItem.getQuantityInStock()+"\t\t"+
                                 inventoryItem.getInventoryCost());

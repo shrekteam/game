@@ -15,6 +15,9 @@ public class Player  implements Serializable {
     private String name;
     private double bestTime;
 
+   
+    
+
     public Player() {
         bestTime=0;
     }

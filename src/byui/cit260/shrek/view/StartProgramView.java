@@ -13,9 +13,13 @@ import java.util.Scanner;
  *
  * @author bruno
  */
-public class StartProgramView { 
+public class StartProgramView extends View{ 
+
+    public StartProgramView(String promptMessage) {
+        super(promptMessage);
+    }
     public void displayBanner(){
-        System.out.println("*                         *"
+        this.console.println("*                         *"
                 +"\n* This is Shrek adventure's game"
                 +"\n* You can choose among different stories"
                 +"\n* It will be a wonderful game! "
@@ -37,24 +41,34 @@ private String getPlayersName() {
         //To change body of generated methods, choose Tools | Templates.
         boolean valid=false;
         String playersName=null;
-        Scanner keyboard = new Scanner(System.in);
+      try{
+        //Scanner keyboard = new Scanner(System.in);
         while(!valid){
-            System.out.println("Enter the player's name");
-            playersName=keyboard.nextLine();
+            this.console.println("Enter the player's name");
+            
+            //playersName=keyboard.nextLine();
+            playersName=this.keyboard.readLine();
             playersName=playersName.trim();
             if(playersName.length()<2) {
-                System.out.println("Invalid name-it must not be blank");
+                ErrorView.display(this.getClass().getName(),"Invalid name-it must not be blank");
                 continue;}
             break;
             }
-        return playersName;
-        }
+        }catch(Exception e)
+        {
+            ErrorView.display(this.getClass().getName(),"Error reading input: "+e.getMessage());
+      }
+      return playersName;
+    }
+      
 
     private void displayWelcomeMessage(Player player) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        System.out.println("\n\n============================================");
-        System.out.println("\t Welcome to the game  "+player.getName());
-        System.out.println("\t We hope you have a lot of fun!");
-        System.out.println("================================================");
+        this.console.println("\n\n============================================");
+        this.console.println("\t Welcome to the game  "+player.getName());
+        this.console.println("\t We hope you have a lot of fun!");
+        this.console.println("================================================");
     }
+    @Override
+    public boolean doAction(Object obj) {return false;}
 }

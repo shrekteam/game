@@ -49,7 +49,7 @@ public class MainMenuView extends View{
             case 'E':
                 return true;
             default:
-                System.out.println("Enter the right value");
+                this.console.println("Enter the right value");
                 break;              
        }
         return false;
@@ -60,10 +60,10 @@ public class MainMenuView extends View{
        try{
             GameControl.createNewGame(Shrek.getPlayer());
         } catch (MapControlException mce){
-            System.out.println(mce.getMessage());
+            ErrorView.display(this.getClass().getName(),mce.getMessage());
             return;
         } catch (Throwable te){
-        System.out.println(te.getMessage());
+        ErrorView.display(this.getClass().getName(),te.getMessage());
         te.printStackTrace();
         return;
         }
@@ -72,14 +72,30 @@ public class MainMenuView extends View{
     }
 
     private void startExistingGame() {
-        System.out.println("***Start Existing Game****");
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.console.println("\nEnter the file path for file where the game is to be saved");
+        String filePath = this.getInput();
+        try {
+            GameControl.getSavedGame(filePath);
+        }catch (Exception ex){
+            ErrorView.display("MainMenuView", ex.getMessage());
+        }
+        GameMenuView gameMenu = new GameMenuView();
+        gameMenu.display();
+        
     }
 
     private void saveGame() {
-        System.out.println("***Save Game************");
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        this.console.println("\nEnter the file path for file where the game is to be saved");
+        String filePath = this.getInput();
+        try {
+            GameControl.saveGame(Shrek.getCurrentGame(),filePath);
+            }catch (Exception ex){
+                ErrorView.display("MainMenuView", ex.getMessage());
+              }  
+        
+            
+        }
+        
     private void displayHelpMenu() {
         
         HelpMenuView myHelp = new HelpMenuView();

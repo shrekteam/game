@@ -67,18 +67,27 @@ public class Shrek {
             try {
                 Shrek.inFile = new BufferedReader(new InputStreamReader(System.in));
                 Shrek.outFile = new PrintWriter(System.out, true);
-                String filePath="log.txt";
+                String filePath="C:/Users/Bruno/Documents/log.txt";
                 Shrek.logFile = new PrintWriter (filePath);
-                StartProgramView startProgramView = new StartProgramView();
+                //Shrek.logFile.println("prova");
+                //Shrek.logFile.close();
+                StartProgramView startProgramView = new StartProgramView("");
                 startProgramView.startProgram();
             
+            }
+            catch (IOException exe ){
+                System.out.println(exe.getMessage());
+                //te.printStackTrace();
+                //startProgramView.startProgram();
             }
             catch (Throwable te ){
                 System.out.println(te.getMessage());
                 te.printStackTrace();
                 //startProgramView.startProgram();
             }
+            
             finally{
+                Shrek.logFile.close();
                 try {
                     if(Shrek.inFile!=null)
                     Shrek.inFile.close();

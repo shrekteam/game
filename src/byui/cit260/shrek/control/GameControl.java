@@ -1,6 +1,8 @@
 
 package byui.cit260.shrek.control;
 
+//import byui.cit260.shrek.exceptions.GameControlException;
+import byui.cit260.shrek.exceptions.GameControlException;
 import byui.cit260.shrek.model.Enemy;
 import byui.cit260.shrek.model.Game;
 import byui.cit260.shrek.model.InventoryItem;
@@ -15,6 +17,12 @@ import byui.cit260.shrek.model.Wall;
 import byui.cit260.shrek.model.Weapon;
 import shrek.Shrek;
 import byui.cit260.shrek.exceptions.MapControlException;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 /**
  *
@@ -154,6 +162,39 @@ public class GameControl {
                
         return inventoryList;
     }
+
+    public static void saveGame(Game game, String filePath) 
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throws GameControlException {
+        try (FileOutputStream fops = new FileOutputStream(filePath)) {
+            ObjectOutputStream output = new ObjectOutputStream (fops);
+            output.writeObject(game);
+            //output.writeObject(Shrek.getCurrentGame().getInventory());
+            }
+        catch (IOException e){
+            throw new GameControlException(e.getMessage());
+            }
+        }
+
+    public static void getSavedGame(String filePath)
+        throws GameControlException{
+        Game game = null;
+        try (FileInputStream fips = new FileInputStream(filePath)) {
+            ObjectInputStream output = new ObjectInputStream (fips);
+            game = (Game) output.readObject();
+            Shrek.setCurrentGame(game);
+            //game.setInventory(inventoryList);
+            }
+        catch (FileNotFoundException fnfe){
+            throw new GameControlException(fnfe.getMessage());
+            }
+        catch (Exception e){
+             throw new GameControlException(e.getMessage());
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+
     public int purchaseItem(InventoryItem[] inventory, String value) {
         int quantity=0;
         for (InventoryItem myItem:inventory) {

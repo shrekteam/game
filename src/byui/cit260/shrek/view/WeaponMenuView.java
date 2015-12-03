@@ -45,13 +45,13 @@ public class WeaponMenuView extends View{
         boolean repeatDisplay=false;
         
         //System.out.println(MENU);
-        System.out.println(super.getPromptMessage());
+        this.console.println(super.getPromptMessage());
         do {  
             boolean value1=true;
             boolean value2=true;
           
             while(value1==true) {
-            System.out.println("Insert the slope within O to 90 degrees or enter E to Exit");
+            this.console.println("Insert the slope within O to 90 degrees or enter E to Exit");
             String value = this.getInput();
             if (value.equals("E")||value.equals("e"))return;
             
@@ -59,25 +59,25 @@ public class WeaponMenuView extends View{
                 slope = Double.parseDouble(value);
                 value1=false;
              }catch(NumberFormatException nf) {
-                System.out.println("Enter a valid number.Try again or enter E to Exit");}
+                ErrorView.display(this.getClass().getName(),"Enter a valid number.Try again or enter E to Exit");}
              catch (Throwable te){
-                System.out.println(te.getMessage());
+                ErrorView.display(this.getClass().getName(),te.getMessage());
                 te.printStackTrace();
              }
             }
             //System.out.println(MENUslope);
             //slope = Double.valueOf(this.getInput());
             while(value2==true) {
-              System.out.println("Insert the speed within 1 m/s and 20 m/s or enter E to Exit");
+              this.console.println("Insert the speed within 1 m/s and 20 m/s or enter E to Exit");
               String value = this.getInput();
               if (value.equals("E")||value.equals("e"))return;
               try{
                     speed = Double.parseDouble(value);
                     value2=false;
                 }catch(NumberFormatException nf) {
-                 System.out.println("Enter a valid number.Try again or enter E to Exit");}
+                 ErrorView.display(this.getClass().getName(),"Enter a valid number.Try again or enter E to Exit");}
                 catch (Throwable te){
-                System.out.println(te.getMessage());
+                ErrorView.display(this.getClass().getName(),te.getMessage());
                 te.printStackTrace();
                 }
             } 
@@ -99,18 +99,18 @@ public class WeaponMenuView extends View{
        try {
        myHeight = myWeaponControl.calcLaunchHeight(mySpeed, mySlope);
        } catch(WeaponControlException wce) {
-               System.out.println(wce.getMessage());
+               this.console.println(wce.getMessage());
        }
      
        myHeight=Math.round(myHeight*100);
        myHeight=myHeight/100;
-       System.out.println("The height is: "+myHeight);
+       this.console.println("The height is: "+myHeight);
     
        if (myHeight>10)
-        {System.out.println("\nYou climbed the tower!!");
+        {this.console.println("\nYou climbed the tower!!");
         repeat=false;
         }
-        else {System.out.println("\nRetry values because the height must be > 10m !!");}
+        else {this.console.println("\nRetry values because the height must be > 10m !!");}
     return repeat;
     
     }
