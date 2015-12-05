@@ -134,7 +134,7 @@ public class GameMenuView extends View {
         
     }
 
-    private void displayMap(Map map) {
+    private void displayMap2(Map map) {
                         
         Location[][] locations = map.getLocations();
         this.console.println("Shrek's Adventures Map");
@@ -156,6 +156,45 @@ public class GameMenuView extends View {
             this.console.println("-");       
         }
       
+    }
+    
+    private void displayMap(Map map) {
+
+        Location[][] locations = map.getLocations();
+        System.out.println("Shrek's Adventures Map");
+            for(int i=0;i<locations.length;i++){
+        //System.out.println(locations[i][0]);
+                for (int j=0; j<locations[i].length;j++){ 
+                    if (i == 0)
+                    {
+                    if (j == 0)
+                    {
+                    System.out.print(((i < 10) ? "Row: " : "Row: ") +i); //+"|"); 
+                    }
+                    System.out.print(((j < 10) ? "| " : "|") +j); //+"|");
+                    if (j == (locations[i].length - 1))
+                    System.out.print("|");
+                    }
+                    else
+                    {
+                    // Show Row number
+                    if (j == 0)
+                    System.out.print(((i < 10) ? "Row: " : "Row: ") +i+"|"); 
+                    // System.out.print(i+"|");
+
+                    Location location = locations[i][j];
+                            if (location.isVisited()){
+                            Scene myScene=location.getScene();
+                            System.out.println(myScene.getMapSymbol());
+                            }
+                            else 
+                            System.out.print("??");
+                            System.out.print("|");
+                            }
+                }
+                System.out.println("-"); 
+       }
+
     }
 
     private void displayTotalCost(InventoryItem[] inventory) {

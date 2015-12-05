@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author bruno
  */
 public class Map implements Serializable{
-    private int noOfRows;
+   
 
     public int getNoOfRows() {
         return noOfRows;
@@ -29,8 +29,11 @@ public class Map implements Serializable{
     public void setNoOfColumns(int noOfColumns) {
         this.noOfColumns = noOfColumns;
     }
+    
+    private int noOfRows;
     private int noOfColumns;
     private Location[][] locations;
+    
     public Map(int noOfRows, int noOfColumns){
         if(noOfRows<1||noOfColumns<1){
             System.out.println("The number of rows and columns must be >0");
