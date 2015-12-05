@@ -32,10 +32,11 @@ public class GameMenuView extends View {
             +"\n----------------------------------------"
             +"\n|              Game Menu                |"
             +"\n----------------------------------------"
-            +"\nV - View map"     
+            +"\nV - View map"    
+            +"\nM - Move person to new location"      
             +"\nI - View list of inventory items sorted by inventory type"
             +"\nS - View list of inventory items sorted by quantity in stock"
-            +"\nR - Print inventory list Report"
+            +"\nR - Print inventory list report"
             +"\nP - Purchase an item"
             +"\nC - Evaluate the total item list cost" 
             +"\nT - Shrek rescues the princess from the tower"
@@ -50,11 +51,16 @@ public class GameMenuView extends View {
         char choice = value.charAt(0);
         Game myGame = Shrek.getCurrentGame();
         InventoryItem[] inventory= myGame.getInventory();
+        //Map myMap = myGame.getMap();
         switch (choice){
+                
             case 'V':
                 //Game myGame = Shrek.getCurrentGame();
                 Map myMap = myGame.getMap();
                 this.displayMap(myMap);
+                break;
+            case 'M':
+                this.chooseLocation();
                 break;
             case 'I':
                 this.viewInventory();
@@ -261,5 +267,48 @@ public class GameMenuView extends View {
             ErrorView.display(this.getClass().getName(),"Error: "+e.getMessage());
           }
      }
+    
+    private void chooseLocation() {
+        boolean repeatDisplay = false;
+        int x=0;
+        int y=0;
+        do {
+          boolean value1=true;
+          boolean value2=true;
+          while(value1==true) { 
+            this.console.println("Enter the integer coordinates x of the location between 1 an 20 or enter E to Exit"); 
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
+            try{
+            x = Integer.parseInt(value);
+            value1=false;
+            }catch(NumberFormatException nf) {
+            ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit");
+            }
+            catch (Throwable te){
+            ErrorView.display(this.getClass().getName(),te.getMessage());
+            te.printStackTrace();
+            }
+          } 
+           
+          while(value2==true) {
+            this.console.println("Enter the integer coordinates x of the location between 1 an 20 or enter E to Exit");
+            String value = this.getInput();
+            if (value.equals("E")||value.equals("e"))return;
+            try{
+            y = Integer.parseInt(value);
+            value2=false;
+            }catch(NumberFormatException nf) {
+            ErrorView.display(this.getClass().getName(),"You must enter a valid number.Try again or enter E to Exit ");}
+            catch (Throwable te){
+            ErrorView.display(this.getClass().getName(),te.getMessage());
+            te.printStackTrace();
+            }
+            
+         }
+          this.console.println("The money you gained at this location is 10$");
+        } while(repeatDisplay==true);
+        
+    }
 }
         
