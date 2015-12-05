@@ -65,6 +65,8 @@ public class Shrek {
             
             
             try {
+                
+                
                 Shrek.inFile = new BufferedReader(new InputStreamReader(System.in));
                 Shrek.outFile = new PrintWriter(System.out, true);
                 String filePath="C:/Users/Bruno/Documents/log.txt";

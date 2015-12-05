@@ -12,16 +12,18 @@ import byui.cit260.shrek.model.InventoryItem;
 import byui.cit260.shrek.model.Location;
 import byui.cit260.shrek.model.Map;
 import byui.cit260.shrek.model.Scene;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import shrek.Shrek;
-
-
 /**
  *
  * @author bruno
  */
 public class GameMenuView extends View {
     static GameMenuView gameMenu;
+    private String filePath ="";
     public GameMenuView() {
     //private final String MENU="\n"
          super("\n"
@@ -33,11 +35,12 @@ public class GameMenuView extends View {
             +"\nV - View map"     
             +"\nI - View list of inventory items sorted by inventory type"
             +"\nS - View list of inventory items sorted by quantity in stock"
+            +"\nR - Print inventory list Report"
             +"\nP - Purchase an item"
             +"\nC - Evaluate the total item list cost" 
-            +"\nR - Shrek rescues the princess from the tower"
+            +"\nT - Shrek rescues the princess from the tower"
             +"\nG - Shrek goes away from the dragon"
-            +"\nT - Shrek enters the town breaking the wall"
+            +"\nW - Shrek enters the town breaking the wall"
             +"\nE - Exit"
             +"\n----------------------------------------");
          }
@@ -59,13 +62,13 @@ public class GameMenuView extends View {
             case 'P':
                 this.purchaseItem();
                 break;
-            case 'R':
+            case 'T':
                 this.rescuePrincess();
                 break;
             case 'G':
                 this.goAway();
                 break;
-            case 'T':
+            case 'W':
                 this.enterTown();
             break;
             case 'C':
@@ -75,6 +78,10 @@ public class GameMenuView extends View {
             case 'S':
                 //InventoryItem[] inventory= myGame.getInventory();
                 this.viewInventoryQuantitySorted();
+                break;
+            case 'R':
+                //InventoryItem[] inventory= myGame.getInventory();
+                this.fileChoice();
                 break;
             case 'E':
                 return true;
@@ -149,7 +156,7 @@ public class GameMenuView extends View {
             this.console.println("-");       
         }
       
- }
+    }
 
     private void displayTotalCost(InventoryItem[] inventory) {
         int cost=0;
@@ -175,5 +182,45 @@ public class GameMenuView extends View {
         }
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    private void displayReportMenu() {
+        
+        ReportMenuView myReport = new ReportMenuView();
+        myReport.display();
+        
+    }
+    
+    private void fileChoice() {
+        this.console.println("\tEnter the file path for the file where the game is to be saved.");
+        this.console.println("\tIt can be absolute (for example c:/users/filename.txt)");
+        this.console.println("\tor relative (filename.txt), in this case it will be saved in the program directory");
+        try{ 
+            this.filePath = this.getInput();
+            FileWriter outfile= new FileWriter(this.filePath);
+            this.printInventoryReport();
+        }catch(IOException ex){
+            ErrorView.display(this.getClass().getName(),"I/O Error: "+ex.getMessage());
+        }catch(Exception e){
+            ErrorView.display(this.getClass().getName(),"Error: "+e.getMessage());
+        }
+        
+    }
+    
+    public void printInventoryReport(){
+        InventoryItem[] inventoryItems = GameControl.getSortedQuantityInventoryList();
+       // if(!this.filePath.isEmpty()){
+        try (PrintWriter out1 = new PrintWriter (this.filePath)) {
+            out1.println("\n\n          Inventory Report ");
+            out1.printf("%n%-20s%10s%10s","Type", "Quantity", "Price");
+            out1.printf("%n%-20s%10s%10s","-----------","-----------","-----------");
+            for(InventoryItem inventoryItem:inventoryItems){
+                out1.printf("%n%-20s%10s%10s",inventoryItem.getInventoryType(),inventoryItem.getQuantityInStock(),inventoryItem.getInventoryCost());
+            }
+            this.console.println("\n The report was successfully printed to the specified path!");
+          }catch(IOException ex){
+            ErrorView.display(this.getClass().getName(),"I/O Error: "+ex.getMessage());
+          }catch(Exception e){
+            ErrorView.display(this.getClass().getName(),"Error: "+e.getMessage());
+          }
+     }
 }
+        
