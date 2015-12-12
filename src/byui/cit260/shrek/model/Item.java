@@ -12,7 +12,6 @@ package byui.cit260.shrek.model;
 public enum Item {
     sword,
     arrow,
-    knife,
     spear
     
 }

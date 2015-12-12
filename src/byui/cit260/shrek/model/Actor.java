@@ -14,7 +14,7 @@ import java.io.Serializable;
  */
 public enum Actor implements Serializable {
 
-    Shrek("He is the ogre and leader of adventures"),
+    Ogre("He is the ogre and leader of adventures"),
     Donkey("He is Shrek's adventure friend"),
     Fiona("She is the princess and she is to rescueing"),
     Farquaad("He is the Lord of the land"),

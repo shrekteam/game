@@ -10,6 +10,7 @@ import java.util.Scanner;
 import shrek.Shrek;
 import byui.cit260.shrek.control.WallControl;
 import byui.cit260.shrek.exceptions.WallControlException;
+import byui.cit260.shrek.model.InventoryItem;
 import byui.cit260.shrek.model.Wall;
 
 public class WallMenuView extends View{
@@ -24,9 +25,10 @@ public class WallMenuView extends View{
             +"\n----------------------------------------"
             +"\n|         Wall breaking adventure      |"
             +"\n----------------------------------------"
-            +"\nThe goal of this adventure is  to break the wall launching an arrow."
+            +"\nThe goal of this adventure is to break the wall launching an arrow."
             +"\nSo you have to choose the slope and the distance of the launch. "
-            +"\nIf the launch height is more than 10 meters you break the wall ");
+            +"\nIf the launch height is more than 10 meters you break the wall"
+                + "\nThe number of trying is your spears number ");
     }    
     private final String MENUslope=     
             "Insert the slope within O to 90 degrees or enter E to Exit";
@@ -35,6 +37,14 @@ public class WallMenuView extends View{
             "Insert the distance within 10 and 50 meters or enter E to Exit";
     @Override
     public void display() {
+      InventoryItem[] inventory = Shrek.getCurrentGame().getInventory(); 
+      int numberItem=0;
+      for (InventoryItem myItem:inventory) {
+            if (myItem.getInventoryType()=="Spear") {
+                numberItem=myItem.getQuantityInStock();
+        this.console.println("Your number of spears is "+numberItem);
+       if (numberItem>0){   
+        int numberIteration=0;
         
         double slope=0;
         double distance=0;
@@ -42,6 +52,7 @@ public class WallMenuView extends View{
         //System.out.println(MENU);
         this.console.println(super.getPromptMessage());
         do {
+            numberIteration++;
           boolean value1=true;
           boolean value2=true;
           while(value1==true) { 
@@ -82,8 +93,14 @@ public class WallMenuView extends View{
           }
             //selection = input.charAt(0);
             repeatDisplay=this.doAction(slope,distance);
-        } while(repeatDisplay==true);
+        
+         myItem.setQuantityInStock(numberItem-1);
+         numberItem--;
+        } while(repeatDisplay==true && numberIteration<=numberItem);
+     }else {System.out.println("Please purchase a spear");}
     }
+   }
+  }
   @Override
     public boolean doAction(Object obj) {return false;}
     
@@ -107,6 +124,11 @@ public class WallMenuView extends View{
            this.console.println("Please choose again the slope and the distance to have an height >10 meters");
               
        else {this.console.println("You broke the wall and Shrek enters the town!!!"); 
+            Shrek.getCurrentGame().setWinWall(true);
+        if(Shrek.getCurrentGame().isWinWeapon()&&Shrek.getCurrentGame().isWinPathway())
+         {this.console.println("\nYou win the game!!");
+         repeat=false;
+         } 
              repeat=false;}
        return repeat;
     

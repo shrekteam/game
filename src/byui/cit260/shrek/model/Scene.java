@@ -17,8 +17,18 @@ public class Scene implements Serializable{
     private String mapSymbol;
     private boolean blocked;
     private int travelTime;
+    private int money;
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
 
     public Scene() {
+        this.setMoney(0);
     }
 
     @Override

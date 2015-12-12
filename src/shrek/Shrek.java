@@ -31,6 +31,7 @@ import java.util.logging.Logger;
 public class Shrek {
     private static Game currentGame = null;
     private static Player player = null;
+    //private static Player[] players;
     private static  PrintWriter outFile = null;
     private static BufferedReader inFile = null;
     private static  PrintWriter logFile = null;

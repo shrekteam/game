@@ -19,6 +19,42 @@ public class Game implements Serializable{
     private Weapon weapon;
     private InventoryItem[] inventory;
     private Map map;
+    private int gain;
+    private boolean winPathway=false;
+    private boolean winWeapon=false;
+    private boolean winWall=false;
+
+    public int getGain() {
+        return gain;
+    }
+
+    public boolean isWinPathway() {
+        return winPathway;
+    }
+
+    public void setWinPathway(boolean winPathway) {
+        this.winPathway = winPathway;
+    }
+
+    public boolean isWinWeapon() {
+        return winWeapon;
+    }
+
+    public void setWinWeapon(boolean winWeapon) {
+        this.winWeapon = winWeapon;
+    }
+
+    public boolean isWinWall() {
+        return winWall;
+    }
+
+    public void setWinWall(boolean winWall) {
+        this.winWall = winWall;
+    }
+
+    public void setGain(int gain) {
+        this.gain = gain+this.gain;
+    }
 
     public void setPlayer(Player player) {
         this.player=player; 

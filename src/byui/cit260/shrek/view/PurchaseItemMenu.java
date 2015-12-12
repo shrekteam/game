@@ -11,9 +11,10 @@ import shrek.Shrek;
 
 
 public class PurchaseItemMenu extends View {
-
+int totMoney=Shrek.getCurrentGame().getGain();
     
     public PurchaseItemMenu(){
+        
     //private final String MENU="\n"
         super("\n"
             +"\n----------------------------------------"
@@ -21,9 +22,11 @@ public class PurchaseItemMenu extends View {
             +"\n----------------------------------------"
             +"\nS to purchase a Sword with cost 10"
             +"\nA to purchase an Arrow with cost 5"
-            +"\nK to purchase a knife with cost 7"
+           // +"\nK to purchase a Knife with cost 7"
             +"\nP to purchase a Spear with cost 12 "
+                
             + "\nE to exit");
+           this.console.println("\n Your gain until now is "+this.totMoney+" $");
             //+"\nIf the launch height is more than 10 meters you break the wall ");
     }
    
@@ -36,7 +39,7 @@ public class PurchaseItemMenu extends View {
          Game myGame = Shrek.getCurrentGame();
          InventoryItem[] inventory= myGame.getInventory();
          GameControl myGameControl=new GameControl();
-     
+         //System.out.println("\n the money you gained until now is"+this.totMoney);
         switch (choice){
             case 'S':
                 myGameControl.purchaseItem(inventory,"Sword");
@@ -50,7 +53,6 @@ public class PurchaseItemMenu extends View {
             case 'P':
                 myGameControl.purchaseItem(inventory,"Spear");
                 break;
-               
             case 'E':
                 return true;
             default:
@@ -59,22 +61,6 @@ public class PurchaseItemMenu extends View {
        }
     return false;
     }
-/*
-    public int purchaseItem(InventoryItem[] inventory, String value) {
-        int quantity=0;
-        for (InventoryItem myItem:inventory) {
-             //System.out.println(myItem.getInventoryType());
-            if (myItem.getInventoryType()==value){
-                myItem.setQuantityInStock(myItem.getQuantityInStock()+1);
-               // System.out.println("sword ="+myItem.getQuantityInStock());
-                System.out.println("A"+value+" is added to the Inventory List");
-                quantity=myItem.getQuantityInStock();
-                System.out.println("Now the "+value+" number is = "+quantity);
-            }
-        }
-       return quantity;
-      }
-*/
 }
 
     

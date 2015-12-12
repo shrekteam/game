@@ -12,12 +12,7 @@ package byui.cit260.shrek.model;
 public enum SceneType {
     start,
     place,
-    tower,
-    bridge,
     building,
     finish
     
-    
-    
-   
 }

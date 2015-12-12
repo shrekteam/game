@@ -15,6 +15,7 @@ import java.util.Objects;
 public class Enemy implements Serializable {
 
     public Enemy() {
+        
     }
     private String name;
     private int strength;

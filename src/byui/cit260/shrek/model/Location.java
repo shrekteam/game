@@ -19,7 +19,16 @@ public class Location implements Serializable{
     private boolean visited;
     private Scene scene;
     private ArrayList<Actor> actors;
+    private Actor actor;
 
+    public Actor getActor() {
+        return actor;
+    }
+
+    public void setActor(Actor actor) {
+        this.actor = actor;
+    }
+    
     public Location() {
     }
 

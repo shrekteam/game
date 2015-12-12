@@ -7,6 +7,7 @@ package byui.cit260.shrek.view;
 
 import byui.cit260.shrek.control.GameControl;
 import byui.cit260.shrek.control.MapControl;
+import byui.cit260.shrek.model.Actor;
 import byui.cit260.shrek.model.Game;
 import byui.cit260.shrek.model.InventoryItem;
 import byui.cit260.shrek.model.Location;
@@ -27,21 +28,24 @@ public class GameMenuView extends View {
     public GameMenuView() {
     //private final String MENU="\n"
          super("\n"
-    
     //private final String MENU="\n"
             +"\n----------------------------------------"
             +"\n|              Game Menu                |"
             +"\n----------------------------------------"
             +"\nV - View map"    
-            +"\nM - Move person to new location"      
-            +"\nI - View list of inventory items sorted by inventory type"
-            +"\nS - View list of inventory items sorted by quantity in stock"
+            +"\nM - Move to new location gaining money"      
+            +"\nI - View list of inventory game tools sorted by type"
+            +"\nS - View list of inventory game tools sorted by quantity in stock"
+            +"\nA - List of enemies"    
+            +"\nB - List of enemies sorted by name"    
+            +"\nL - List of scenes"   
+            +"\nN - List of scenes sorted by money gained" 
             +"\nR - Print inventory list report"
-            +"\nP - Purchase an item"
-            +"\nC - Evaluate the total item list cost" 
-            +"\nT - Shrek rescues the princess from the tower"
-            +"\nG - Shrek goes away from the dragon"
-            +"\nW - Shrek enters the town breaking the wall"
+            +"\nP - Purchase a game tools participating to an adventure"
+            +"\nC - Evaluate the total game tools list cost" 
+            +"\nT - First adventure: rescue the princess from the tower"
+            +"\nG - Second adventure: escape from the dragon"
+            +"\nW - Third adventure: enter the town breaking its wall"
             +"\nE - Exit"
             +"\n----------------------------------------");
          }
@@ -57,8 +61,31 @@ public class GameMenuView extends View {
             case 'V':
                 //Game myGame = Shrek.getCurrentGame();
                 Map myMap = myGame.getMap();
-                this.displayMap(myMap);
+                this.displayMap2(myMap);
                 break;
+            case 'A':
+                //Game myGame = Shrek.getCurrentGame();
+                this.listActors();
+                break;
+            case 'B':
+                //Game myGame = Shrek.getCurrentGame();
+                Actor[] myActor = Actor.values();
+                String[] mylist = {"","","","",""};
+                //Actor myActor;
+                int i;
+                for(i=0;i<5;i++)
+                    mylist[i] = myActor[i].name();
+                //for (Actor actor:myActor){
+                  //   mylist[1] = myActor.toString();
+                    //  }
+                GameControl.getSortedStringList(mylist);
+                 
+                break;
+            case 'L':
+                //Game myGame = Shrek.getCurrentGame();
+                this.viewListScenes();
+                break;
+            
             case 'M':
                 this.chooseLocation();
                 break;
@@ -79,7 +106,8 @@ public class GameMenuView extends View {
             break;
             case 'C':
                 //InventoryItem[] inventory= myGame.getInventory();
-                this.displayTotalCost(inventory);
+                this.win();
+                //this.diddsplayTotalCost(inventory);
                 break;
             case 'S':
                 //InventoryItem[] inventory= myGame.getInventory();
@@ -98,6 +126,13 @@ public class GameMenuView extends View {
     return false;
     }
     
+    private void win() {
+        boolean a = Shrek.getCurrentGame().isWinPathway();
+        boolean b = Shrek.getCurrentGame().isWinWall();
+        boolean c = Shrek.getCurrentGame().isWinWeapon();
+        this.console.println("Pathway:"+a+"Wall:"+b+"Weapon:"+c);
+        
+    }
     private void rescuePrincess() {
         this.console.println("***The goal is to rescue the Princess");
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -116,7 +151,43 @@ public class GameMenuView extends View {
         WallMenuView myWallMenu=new WallMenuView();
         myWallMenu.display();
     }
+    private void listActors() {
+        Actor[] actors= Actor.values();
+         for(Actor actor:actors) {
+             this.console.println(actor+":"+actor.getDescription());
+             
+         }
+    }
+    private void viewListScenes() {
+        Scene[] scenes=MapControl.createScenes();
+        this.console.println("\nList of Scenes");
+        this.console.println("\nDescription                  "+"\t"+
+                            "Map Symbol"+"\t"+
+                             "Money\n");
+        for (Scene scene:scenes){
+            this.console.println(scene.getDescription()+"\t"+
+                                scene.getMapSymbol()+"\t"+
+                                scene.getMoney());
+                                
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
+    private void viewSortedListScenes() {
+        Scene[] scenes=MapControl.createScenes();
+        this.console.println("\nList of Scenes");
+        this.console.println("\nDescription                  "+"\t"+
+                            "Map Symbol"+"\t"+
+                             "Money\n");
+        for (Scene scene:scenes){
+            this.console.println(scene.getDescription()+"\t"+
+                                scene.getMapSymbol()+"\t"+
+                                scene.getMoney());
+                                
+        }
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     private void viewInventory() {
         InventoryItem[] inventory=GameControl.getInsertionSortedInventoryList();
         this.console.println("\nList of Inventory Items");
@@ -143,20 +214,21 @@ public class GameMenuView extends View {
     private void displayMap2(Map map) {
                         
         Location[][] locations = map.getLocations();
-        this.console.println("Shrek's Adventures Map");
+        this.console.println("Shrek's Adventures Map: "
+                + "\nevery cell if visited shows the money gained otherwise shows ??\n ");
         for(int i=0;i<locations.length;i++){
-            this.console.println("row : "+i+" -");
+            this.console.print("row "+i+": ");
             //System.out.println(locations[i][0]);
             for (int j=0; j<locations[i].length;j++){ 
-                this.console.print(j+"|");
+                this.console.print("|");
                 
                 Location location = locations[i][j];
                 if (location.isVisited()){
                        Scene myScene=location.getScene();
-                       this.console.println(myScene.getMapSymbol());
+                       this.console.print(myScene.getMoney());
                 }
-                else this.console.println("??");
-                this.console.println("|");
+                else this.console.print("??");
+                //this.console.print("|");
            
             }
             this.console.println("-");       
@@ -168,30 +240,31 @@ public class GameMenuView extends View {
 
         Location[][] locations = map.getLocations();
         System.out.println("Shrek's Adventures Map");
+        System.out.println("every cell visited shows the money gained");
             for(int i=0;i<locations.length;i++){
         //System.out.println(locations[i][0]);
                 for (int j=0; j<locations[i].length;j++){ 
                     if (i == 0)
                     {
-                    if (j == 0)
-                    {
-                    System.out.print(((i < 10) ? "Row: " : "Row: ") +i); //+"|"); 
-                    }
-                    System.out.print(((j < 10) ? "| " : "|") +j); //+"|");
-                    if (j == (locations[i].length - 1))
-                    System.out.print("|");
+                       if (j == 0)
+                       {
+                       System.out.print(((i < 10) ? "Row: " : "Row: ") +i); //+"|"); 
+                       }
+                       System.out.print(((j < 10) ? "| " : "|") +j); //+"|");
+                       if (j == (locations[i].length - 1))
+                       System.out.print("|");
                     }
                     else
                     {
                     // Show Row number
-                    if (j == 0)
-                    System.out.print(((i < 10) ? "Row: " : "Row: ") +i+"|"); 
-                    // System.out.print(i+"|");
+                        if (j == 0)
+                        System.out.print(((i < 10) ? "Row: " : "Row: ") +i+"|"); 
+                        // System.out.print(i+"|");
 
-                    Location location = locations[i][j];
+                        Location location = locations[i][j];
                             if (location.isVisited()){
                             Scene myScene=location.getScene();
-                            System.out.println(myScene.getMapSymbol());
+                            System.out.print(myScene.getMoney());
                             }
                             else 
                             System.out.print("??");
@@ -269,14 +342,17 @@ public class GameMenuView extends View {
      }
     
     private void chooseLocation() {
+        //the actor choose the location where gain money
+        Location[][] mylocation = Shrek.getCurrentGame().getMap().getLocations();
         boolean repeatDisplay = false;
         int x=0;
         int y=0;
+        int totMoney=0;
         do {
           boolean value1=true;
           boolean value2=true;
           while(value1==true) { 
-            this.console.println("Enter the integer coordinates x of the location between 1 an 20 or enter E to Exit"); 
+            this.console.println("Enter the integer coordinates x of the location between 0 an 19 or enter E to Exit"); 
             String value = this.getInput();
             if (value.equals("E")||value.equals("e"))return;
             try{
@@ -292,7 +368,7 @@ public class GameMenuView extends View {
           } 
            
           while(value2==true) {
-            this.console.println("Enter the integer coordinates x of the location between 1 an 20 or enter E to Exit");
+            this.console.println("Enter the integer coordinates x of the location between 0 an 19 or enter E to Exit");
             String value = this.getInput();
             if (value.equals("E")||value.equals("e"))return;
             try{
@@ -306,9 +382,30 @@ public class GameMenuView extends View {
             }
             
          }
-          this.console.println("The money you gained at this location is 10$");
+          //Shrek.getCurrentGame().setGain(x*y/10);
+          int money=0;
+          try{
+          //if (mylocation[x][y].getScene().getMoney()>0)
+          money=mylocation[x][y].getScene().getMoney();
+          }catch (Exception te){
+            ErrorView.display(this.getClass().getName(),"no money in this location");
+            //te.printStackTrace();
+            }
+          if (mylocation[x][y].isVisited()==false)
+             {Shrek.getCurrentGame().setGain(money);
+             mylocation[x][y].setVisited(true);}
+          else 
+              {this.console.println("You already visited this location, so you cannot increase your gain!");
+              }
+          totMoney = Shrek.getCurrentGame().getGain();
+          this.console.println(""
+                  + "the Scene of this location is: "+mylocation[x][y].getScene().getDescription()
+                  +"\nthe Enemy is:  "+mylocation[x][y].getActor()+"");
+          this.console.println("The money you gained at this location is "+money);
+          this.console.println("The total money you gained is "+totMoney);
         } while(repeatDisplay==true);
         
     }
+    
 }
         
