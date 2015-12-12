@@ -16,7 +16,7 @@ public enum Actor implements Serializable {
 
     Ogre("He is the ogre and leader of adventures"),
     SoldierHead("He is Shrek's adventure friend"),
-    Prince("She is the princess and she is to rescueing"),
+    Warrior("She is the princess and she is to rescueing"),
     Farquaad("He is the Lord of the land"),
     Soldier("He is an army soldier");
     
