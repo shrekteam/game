@@ -14,10 +14,10 @@ import java.io.Serializable;
  */
 public enum Actor implements Serializable {
 
-    Ogre("He is the ogre and leader of adventures"),
-    SoldierHead("He is Shrek's adventure friend"),
-    Warrior("She is the princess and she is to rescueing"),
-    Farquaad("He is the Lord of the land"),
+    Ogre(" "),
+    SoldierHead(""),
+    Warrior(""),
+    Farquaad("the Prince"),
     Soldier("He is an army soldier");
     
     private final String description;
