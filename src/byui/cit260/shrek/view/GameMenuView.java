@@ -165,7 +165,7 @@ public class GameMenuView extends View {
     private void viewListScenes() {
         Scene[] scenes=MapControl.createScenes();
         this.console.println("\nList of Scenes");
-        this.console.println("\nDescription                  "+"\t"+
+        this.console.println("\nDescription "+"\t"+
                             "Map Symbol"+"\t"+
                              "Money\n");
         for (Scene scene:scenes){

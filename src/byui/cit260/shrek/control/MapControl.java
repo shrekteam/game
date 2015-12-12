@@ -64,7 +64,7 @@ public static int moveActorToLocation (Actor actor, Point coordinates)
         Scene[] scenes = new Scene[SceneType.values().length];
         Scene startingScene = new Scene();
         startingScene.setDescription(
-         "\nAnd we came to the land of the Lord Farquaad");
+         "\nThe land of the Lord Farquaad");
         startingScene.setMapSymbol("ST");
         startingScene.setBlocked(false);
         startingScene.setTravelTime(240);
@@ -91,7 +91,7 @@ public static int moveActorToLocation (Actor actor, Point coordinates)
         
         Scene finishScene=new Scene();
         finishScene.setDescription(
-                "\nCongratulation! you have finished winning the game ");
+                "\nCongratulation! you finished the game ");
         finishScene.setMapSymbol("FI");
         finishScene.setBlocked(false);
         startingScene.setMoney(15);
