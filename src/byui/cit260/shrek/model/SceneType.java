@@ -13,6 +13,7 @@ public enum SceneType {
     start,
     place,
     building,
+    river,
     finish
     
 }

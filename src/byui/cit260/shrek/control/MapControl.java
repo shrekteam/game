@@ -73,28 +73,37 @@ public static int moveActorToLocation (Actor actor, Point coordinates)
         
         Scene secondScene = new Scene();
         secondScene.setDescription(
-         "\nAnd we escaped from the dragon");
+         "\nAnd we escaped from the place");
         secondScene.setMapSymbol("PL");
-        startingScene.setBlocked(false);
-        startingScene.setTravelTime(200);
-        startingScene.setMoney(15);
+        secondScene.setBlocked(false);
+        secondScene.setTravelTime(200);
+        secondScene.setMoney(15);
         scenes[SceneType.place.ordinal()]=secondScene;
         
         Scene thirdScene = new Scene();
         thirdScene.setDescription(
-         "\nAnd we did come to the tower");
+         "\nAnd we did come to the building");
         thirdScene.setMapSymbol("BU");
         thirdScene.setBlocked(false);
         thirdScene.setTravelTime(200);
-        startingScene.setMoney(13);
+        thirdScene.setMoney(13);
         scenes[SceneType.building.ordinal()]=thirdScene;
+        
+        Scene fourthScene = new Scene();
+        fourthScene.setDescription(
+         "\nAnd we did come to the river");
+        fourthScene.setMapSymbol("BU");
+        fourthScene.setBlocked(false);
+        fourthScene.setTravelTime(200);
+        fourthScene.setMoney(8);
+        scenes[SceneType.river.ordinal()]=fourthScene;
         
         Scene finishScene=new Scene();
         finishScene.setDescription(
-                "\nCongratulation! you finished the game ");
+                "\nWe went to the building ");
         finishScene.setMapSymbol("FI");
         finishScene.setBlocked(false);
-        startingScene.setMoney(15);
+        finishScene.setMoney(15);
         finishScene.setTravelTime((int) Double.POSITIVE_INFINITY);
         scenes[SceneType.finish.ordinal()]=finishScene;
         return scenes;

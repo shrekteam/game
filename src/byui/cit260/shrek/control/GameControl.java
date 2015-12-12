@@ -97,20 +97,21 @@ public class GameControl {
         scene0.setDescription("no scene");
         scene0.setMoney(0);
         Scene scene1= new Scene();
-        scene1.setDescription("Pinocchio");
+        scene1.setDescription("start");
         scene1.setMoney(10);
         Scene scene2= new Scene();
-        scene2.setDescription("BeutyAndBeast");
-        scene2.setMoney(12);
+        scene2.setDescription("place");
+        scene2.setMoney(15);
         Scene scene3= new Scene();
-        scene3.setDescription("Raperunzel");
-        scene3.setMoney(9);
+        scene3.setDescription("building");
+        scene3.setMoney(13);
         Scene scene4= new Scene();
-        scene4.setDescription("Witch");
-        scene4.setMoney(6);
+        scene4.setDescription("river");
+        scene4.setMoney(15);
         Scene scene5= new Scene();
-        scene5.setDescription("DoctorPigs");
-        scene5.setMoney(13);
+        scene5.setDescription("finish");
+        scene5.setMoney(8);
+        /*
         Scene scene6= new Scene();
         scene6.setDescription("Prince");
         scene6.setMoney(14);
@@ -132,7 +133,7 @@ public class GameControl {
         Scene scene12= new Scene();
         scene12.setDescription("Duey");
         scene12.setMoney(7);
-        
+        */
         Location[][] locations = map.getLocations();
         for (int i=0; i<20; i++)
             for(int j=0;j<20; j++)
@@ -153,21 +154,21 @@ public class GameControl {
         locations[1][5].setScenes(scene2);
         locations[1][6].setScenes(scene3);
         locations[1][7].setScenes(scene4);
-        locations[2][0].setScenes(scene6);
-        locations[2][1].setScenes(scene7);
-        locations[2][2].setScenes(scene8);
-        locations[2][3].setScenes(scene9);
-        locations[2][4].setScenes(scene10);
-        locations[2][5].setScenes(scene11);
-        locations[2][6].setScenes(scene12);
+        locations[2][0].setScenes(scene5);
+        locations[2][1].setScenes(scene5);
+        locations[2][2].setScenes(scene4);
+        locations[2][3].setScenes(scene3);
+        locations[2][4].setScenes(scene2);
+        locations[2][5].setScenes(scene1);
+        locations[2][6].setScenes(scene2);
         locations[2][7].setScenes(scene5);
-        locations[3][0].setScenes(scene6);
-        locations[3][1].setScenes(scene7);
-        locations[3][2].setScenes(scene8);
-        locations[3][3].setScenes(scene9);
-        locations[3][4].setScenes(scene10);
-        locations[3][5].setScenes(scene11);
-        locations[3][6].setScenes(scene12);
+        locations[3][0].setScenes(scene4);
+        locations[3][1].setScenes(scene3);
+        locations[3][2].setScenes(scene2);
+        locations[3][3].setScenes(scene1);
+        locations[3][4].setScenes(scene5);
+        locations[3][5].setScenes(scene4);
+        locations[3][6].setScenes(scene3);
         locations[3][7].setScenes(scene2);
         /*
         locations[1][7].setScenes(scenes[SceneType.finish.ordinal()]);
