@@ -41,7 +41,7 @@ public class GameMenuView extends View {
             +"\nL - List of scenes"   
             +"\nN - List of scenes sorted by money gained" 
             +"\nR - Print inventory list report"
-            +"\nP - Purchase a game tools taking part to an adventure"
+            +"\nP - Purchase a game tools to take part to an adventure"
             //+"\nC - Evaluate the total game tools list cost" 
             +"\nT - First adventure: rescue the princess from the tower"
             +"\nG - Second adventure: escape from the dragon"
