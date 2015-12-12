@@ -7,6 +7,7 @@ import byui.cit260.shrek.model.Map;
 import byui.cit260.shrek.model.Scene;
 import byui.cit260.shrek.model.SceneType;
 import byui.cit260.shrek.exceptions.MapControlException;
+import byui.cit260.shrek.model.InventoryItem;
 import java.awt.Point;
 import shrek.Shrek;
 
@@ -98,5 +99,25 @@ public static int moveActorToLocation (Actor actor, Point coordinates)
         scenes[SceneType.finish.ordinal()]=finishScene;
         return scenes;
     }
-    
+    public static Scene[] getSortedSceneList(){
+       //this function implments bubblesort, but I use the next function, InsertionSort
+        //InventoryItem[] originalInventoryList = Shrek.getCurrentGame().getInventory();
+        Scene[] originalScene=MapControl.createScenes();
+        Scene[] sortedScene = originalScene.clone();
+        Scene temp;
+        for(int i=0; i<sortedScene.length-1;i++) {
+            for (int j=0;j<sortedScene.length-1-i;j++){
+                if(sortedScene[j].getMoney()>sortedScene[j+1].getMoney()){
+                        
+                        
+                            temp = sortedScene[j];
+                            sortedScene[j]= sortedScene[j+1];
+                            sortedScene[j+1]= temp;
+                }
+                
+            }
+        }
+               
+        return sortedScene;
+    }
 }

@@ -81,6 +81,10 @@ public class GameMenuView extends View {
                 GameControl.getSortedStringList(mylist);
                  
                 break;
+            case 'N':
+                //Game myGame = Shrek.getCurrentGame();
+                this.viewSortedListScenes();
+                break;
             case 'L':
                 //Game myGame = Shrek.getCurrentGame();
                 this.viewListScenes();
@@ -174,7 +178,7 @@ public class GameMenuView extends View {
     }
 
     private void viewSortedListScenes() {
-        Scene[] scenes=MapControl.createScenes();
+        Scene[] scenes=MapControl.getSortedSceneList();
         this.console.println("\nList of Scenes");
         this.console.println("\nDescription                  "+"\t"+
                             "Map Symbol"+"\t"+
